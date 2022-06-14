@@ -51577,7 +51577,7 @@ a_r(a){var s=0,r=A.A(t.O4),q,p,o,n,m
 var $async$tp=A.B(function(b,c){if(b===1)return A.x(c,r)
 while(true)switch(s){case 0:m=A.afh()
 m.Q=new A.a5X()
-p=A.Lb("https","192.168.4.22:7241","/Data/GetFuelDialogData",A.M(["stationId",a],t.N,t.z))
+p=A.Lb("https","myserver.io:7241","/Data/GetFuelDialogData",A.M(["stationId",a],t.N,t.z))
 s=4
 return A.C(m.uw("get",p),$async$tp)
 case 4:s=3
@@ -51600,7 +51600,7 @@ o_(){var s=0,r=A.A(t.j),q,p,o,n,m,l
 var $async$o_=A.B(function(a,b){if(a===1)return A.x(b,r)
 while(true)switch(s){case 0:l=A.afh()
 l.Q=new A.a6_()
-p=A.Lb("https","192.168.4.22:7241","/Station/GetStations",null)
+p=A.Lb("https","myserver.io:7241","/Station/GetStations",null)
 s=4
 return A.C(l.uw("get",p),$async$o_)
 case 4:s=3
@@ -51628,7 +51628,7 @@ a_W(a){var s=0,r=A.A(t.ma),q,p,o,n,m,l
 var $async$o2=A.B(function(b,c){if(b===1)return A.x(c,r)
 while(true)switch(s){case 0:l=A.afh()
 l.Q=new A.a5Z()
-p=A.Lb("https","192.168.4.22:7241","/User/GetUserSettingsFromToken",A.M(["token",a],t.N,t.z))
+p=A.Lb("https","myserver.io:7241","/User/GetUserSettingsFromToken",A.M(["token",a],t.N,t.z))
 s=4
 return A.C(l.uw("get",p),$async$o2)
 case 4:s=3
@@ -51653,7 +51653,7 @@ aoG(a,b){var s=0,r=A.A(t.y),q,p,o,n
 var $async$Af=A.B(function(c,d){if(c===1)return A.x(d,r)
 while(true)switch(s){case 0:n=A.afh()
 n.Q=new A.a5Y()
-p=A.Lb("https","192.168.4.22:7241","/User/ChangeUserSettings",A.M(["token",a,"name",b.a,"email",b.b,"fuelType",b.c,"fuelSize",b.d],t.N,t.z))
+p=A.Lb("https","myserver.io:7241","/User/ChangeUserSettings",A.M(["token",a,"name",b.a,"email",b.b,"fuelType",b.c,"fuelSize",b.d],t.N,t.z))
 s=3
 return A.C(new A.QG(n).qv("POST",p,null,null,null),$async$Af)
 case 3:o=d
@@ -51669,10 +51669,10 @@ Bs(a){return this.auc(a)},
 auc(a){var s=0,r=A.A(t.N),q,p,o,n,m,l
 var $async$Bs=A.B(function(b,c){if(b===1)return A.x(c,r)
 while(true)switch(s){case 0:m=t.N
-l=A.Lb("https","192.168.4.22:7241","/User/LoginUser",A.M(["email",A.c(a.a,"email"),"password",A.c(a.b,"password")],m,t.z))
+l=A.Lb("https","myserver.io:7241","/User/LoginUser",A.M(["email",A.c(a.a,"email"),"password",A.c(a.b,"password")],m,t.z))
 A.bQ(l)
 s=3
-return A.C(A.bc9(l,A.M(["Accept","text/plain"],m,m)),$async$Bs)
+return A.C(A.bc9(l,A.M(["Accept","text/plain","Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true"],m,m)),$async$Bs)
 case 3:p=c
 m=p.e
 o=A.M_(J.a_(A.LP(m).c.a,"charset"))
@@ -51687,7 +51687,7 @@ return A.z($async$Bs,r)},
 C2(a){return this.awC(a)},
 awC(a){var s=0,r=A.A(t.y),q,p,o
 var $async$C2=A.B(function(b,c){if(b===1)return A.x(c,r)
-while(true)switch(s){case 0:p=A.Lb("http","192.168.4.22:7241","/User/RegisterUser",A.M(["id","4","name",A.c(a.a,"name"),"email",A.c(a.c,"email"),"password",A.c(a.d,"password"),"phone",A.c(a.b,"mobile")],t.N,t.z))
+while(true)switch(s){case 0:p=A.Lb("http","myserver.io:7241","/User/RegisterUser",A.M(["id","4","name",A.c(a.a,"name"),"email",A.c(a.c,"email"),"password",A.c(a.d,"password"),"phone",A.c(a.b,"mobile")],t.N,t.z))
 s=3
 return A.C(A.aUN(p,null,null,null),$async$C2)
 case 3:o=c
