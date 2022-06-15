@@ -48100,9 +48100,9 @@ wz(a){return this.Yt(a)},
 Yt(a){var s=0,r=A.z(t.O4),q,p,o,n
 var $async$wz=A.A(function(b,c){if(b===1)return A.w(c,r)
 while(true)switch(s){case 0:p=t.N
-o=A.Kw("https","myserver.io:7241","/Data/GetFuelDialogData",A.L(["stationId",a],p,t.z))
+o=A.Kw("https","192.168.4.22:7241","/Data/GetFuelDialogData",A.L(["stationId",a],p,t.z))
 s=3
-return A.D(A.aCR(o,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://myserver.io:7242","Access-Control-Allow-Credentials","true"],p,p)),$async$wz)
+return A.D(A.aCR(o,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://192.168.4.22:7242","Access-Control-Allow-Credentials","true"],p,p)),$async$wz)
 case 3:n=c
 A.bK(o)
 A.bK(A.d(n))
@@ -48114,10 +48114,10 @@ return A.y($async$wz,r)}}
 A.qB.prototype={
 rN(){var s=0,r=A.z(t.j),q,p,o,n,m,l
 var $async$rN=A.A(function(a,b){if(a===1)return A.w(b,r)
-while(true)switch(s){case 0:n=A.Kw("https","myserver.io:7241","/Station/GetStations",null)
+while(true)switch(s){case 0:n=A.Kw("https","192.168.4.22:7241","/Station/GetStations",null)
 m=t.N
 s=3
-return A.D(A.aCR(n,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://myserver.io:7242","Access-Control-Allow-Credentials","true"],m,m)),$async$rN)
+return A.D(A.aCR(n,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://192.168.4.22:7242","Access-Control-Allow-Credentials","true"],m,m)),$async$rN)
 case 3:l=b
 A.bK(n)
 m=l.e
@@ -48134,9 +48134,9 @@ rR(a){return this.YY(a)},
 YY(a){var s=0,r=A.z(t.ma),q,p,o,n,m,l
 var $async$rR=A.A(function(b,c){if(b===1)return A.w(c,r)
 while(true)switch(s){case 0:n=t.N
-m=A.Kw("https","myserver.io:7241","/User/GetUserSettingsFromToken",A.L(["token",a],n,t.z))
+m=A.Kw("https","192.168.4.22:7241","/User/GetUserSettingsFromToken",A.L(["token",a],n,t.z))
 s=3
-return A.D(A.aCR(m,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://myserver.io:7242","Access-Control-Allow-Credentials","true"],n,n)),$async$rR)
+return A.D(A.aCR(m,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://192.168.4.22:7242","Access-Control-Allow-Credentials","true"],n,n)),$async$rR)
 case 3:l=c
 A.bK(m)
 n=l.e
@@ -48153,9 +48153,9 @@ zm(a,b){return this.alW(a,b)},
 alW(a,b){var s=0,r=A.z(t.y),q,p,o,n
 var $async$zm=A.A(function(c,d){if(c===1)return A.w(d,r)
 while(true)switch(s){case 0:p=t.N
-o=A.Kw("https","myserver.io:7241","/User/ChangeUserSettings",A.L(["token",a,"name",b.a,"email",b.b,"fuelType",b.c,"fuelSize",b.d],p,t.z))
+o=A.Kw("https","192.168.4.22:7241","/User/ChangeUserSettings",A.L(["token",a,"name",b.a,"email",b.b,"fuelType",b.c,"fuelSize",b.d],p,t.z))
 s=3
-return A.D(A.aHK(o,null,null,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://myserver.io:7242","Access-Control-Allow-Credentials","true"],p,p)),$async$zm)
+return A.D(A.aHK(o,null,null,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://192.168.4.22:7242","Access-Control-Allow-Credentials","true"],p,p)),$async$zm)
 case 3:n=d
 A.bK(o)
 A.bK(A.md(J.Y(A.m9(n.e).c.a,"charset")).bK(0,n.x))
@@ -48169,10 +48169,10 @@ Ay(a){return this.art(a)},
 art(a){var s=0,r=A.z(t.N),q,p,o,n,m,l
 var $async$Ay=A.A(function(b,c){if(b===1)return A.w(c,r)
 while(true)switch(s){case 0:m=t.N
-l=A.Kw("https","myserver.io:7241","/User/LoginUser",A.L(["email",A.b(a.a,"email"),"password",A.b(a.b,"password")],m,t.z))
+l=A.Kw("https","192.168.4.22:7241","/User/LoginUser",A.L(["email",A.b(a.a,"email"),"password",A.b(a.b,"password")],m,t.z))
 A.bK(l)
 s=3
-return A.D(A.aCR(l,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://myserver.io:7242","Access-Control-Allow-Credentials","true"],m,m)),$async$Ay)
+return A.D(A.aCR(l,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://192.168.4.22:7242","Access-Control-Allow-Credentials","true"],m,m)),$async$Ay)
 case 3:p=c
 m=p.e
 o=A.md(J.Y(A.m9(m).c.a,"charset"))
@@ -48188,9 +48188,9 @@ B8(a){return this.atM(a)},
 atM(a){var s=0,r=A.z(t.y),q,p,o,n
 var $async$B8=A.A(function(b,c){if(b===1)return A.w(c,r)
 while(true)switch(s){case 0:p=t.N
-o=A.Kw("http","myserver.io:7241","/User/RegisterUser",A.L(["id","4","name",A.b(a.a,"name"),"email",A.b(a.c,"email"),"password",A.b(a.d,"password"),"phone",A.b(a.b,"mobile")],p,t.z))
+o=A.Kw("http","192.168.4.22:7241","/User/RegisterUser",A.L(["id","4","name",A.b(a.a,"name"),"email",A.b(a.c,"email"),"password",A.b(a.d,"password"),"phone",A.b(a.b,"mobile")],p,t.z))
 s=3
-return A.D(A.aHK(o,null,null,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://myserver.io:7242","Access-Control-Allow-Credentials","true"],p,p)),$async$B8)
+return A.D(A.aHK(o,null,null,A.L(["Accept","text/plain","Access-Control-Allow-Origin","https://192.168.4.22:7242","Access-Control-Allow-Credentials","true"],p,p)),$async$B8)
 case 3:n=c
 A.bK(o)
 A.bK(A.md(J.Y(A.m9(n.e).c.a,"charset")).bK(0,n.x))
