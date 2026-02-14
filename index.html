@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer Goods | Дизайнерские вещи</title>
+    <title>Designer Goods | Эксклюзивные дизайнерские вещи</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="description" content="Эксклюзивные дизайнерские вещи: одежда, аксессуары, предметы интерьера от мировых брендов. Доставка по России.">
 </head>
 <body>
     <!-- Шапка -->
@@ -45,108 +46,127 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Эстетика в каждой детали</h1>
-                <p class="hero-subtitle">Дизайнерская одежда, аксессуары и предметы интерьера, созданные с любовью к прекрасному.</p>
-                <a href="#catalog" class="btn btn-primary">Смотреть коллекцию</a>
+                <h1 class="hero-title">Искусство в деталях</h1>
+                <p class="hero-subtitle">Эксклюзивные дизайнерские вещи от ведущих мировых брендов. Качество, эстетика и неповторимый стиль.</p>
+                <a href="#catalog" class="btn btn-primary">Исследовать коллекцию</a>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1558769132-cb1cb458eabe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Дизайнерские товары" loading="lazy">
+                <img src="assets/images/hero-boutique.jpg" alt="Дизайнерский бутик" loading="lazy">
             </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <!-- Популярные товары -->
-    <section id="catalog" class="products">
+    <section id="catalog" class="products reveal">
         <div class="container">
-            <h2 class="section-title">Популярные товары</h2>
-            <p class="section-subtitle">То, что выбирают наши клиенты</p>
+            <h2 class="section-title">Эксклюзивные товары</h2>
+            <p class="section-subtitle">Тщательно отобранные предметы роскоши</p>
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Шерстяной свитер" loading="lazy">
-                        <span class="product-badge">Хит</span>
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Сумка Gucci" loading="lazy">
+                        <span class="product-badge">Бестселлер</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Шерстяной свитер</h3>
-                        <p class="product-description">Мягкий свитер из мериносовой шерсти, идеальный для холодных дней.</p>
-                        <div class="product-price">4 990 ₽</div>
+                        <h3 class="product-name">Сумка Gucci</h3>
+                        <p class="product-description">Кожаная сумка с фирменным узором, золотая фурнитура, просторное отделение.</p>
+                        <div class="product-price">89 500 ₽</div>
                         <button class="btn btn-outline add-to-cart" data-product="1">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Кожаная сумка" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Швейцарские часы Rolex" loading="lazy">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Кожаная сумка</h3>
-                        <p class="product-description">Минималистичная сумка из натуральной кожи, вместительная и стильная.</p>
-                        <div class="product-price">8 500 ₽</div>
+                        <h3 class="product-name">Часы Rolex</h3>
+                        <p class="product-description">Автоматический механизм, сапфировое стекло, водонепроницаемость 100м.</p>
+                        <div class="product-price">325 000 ₽</div>
                         <button class="btn btn-outline add-to-cart" data-product="2">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Керамическая ваза" loading="lazy">
-                        <span class="product-badge">Новинка</span>
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Кроссовки Prada" loading="lazy">
+                        <span class="product-badge">Новая коллекция</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Керамическая ваза</h3>
-                        <p class="product-description">Ручная работа, уникальная текстура и естественные оттенки.</p>
-                        <div class="product-price">3 200 ₽</div>
+                        <h3 class="product-name">Кроссовки Prada</h3>
+                        <p class="product-description">Ручная работа, итальянская кожа, уникальный дизайн, комфортная колодка.</p>
+                        <div class="product-price">64 800 ₽</div>
                         <button class="btn btn-outline add-to-cart" data-product="3">В корзину</button>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Шёлковый шарф" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Кольцо Cartier" loading="lazy">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Шёлковый шарф</h3>
-                        <p class="product-description">Лёгкий шарф с ручной росписью, идеальный акцент к любому образу.</p>
-                        <div class="product-price">2 800 ₽</div>
+                        <h3 class="product-name">Кольцо Cartier</h3>
+                        <p class="product-description">Белое золото, бриллианты, ручная огранка, ограниченная серия.</p>
+                        <div class="product-price">215 000 ₽</div>
                         <button class="btn btn-outline add-to-cart" data-product="4">В корзину</button>
                     </div>
                 </div>
+            </div>
+            <div class="products-cta">
+                <a href="#contact" class="btn btn-primary">Смотреть всю коллекцию</a>
             </div>
         </div>
     </section>
 
     <!-- О нас -->
-    <section id="about" class="about">
+    <section id="about" class="about reveal">
         <div class="container">
             <div class="about-inner">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Наша мастерская" loading="lazy">
-                </div>
                 <div class="about-content">
-                    <h2 class="section-title">О нас</h2>
-                    <p class="about-text">Мы — сообщество дизайнеров и мастеров, которые верят, что вещи должны приносить радость и вдохновлять. Каждый предмет в нашем каталоге создаётся с вниманием к деталям, качеству материалов и эстетике.</p>
-                    <p class="about-text">Наша философия — минимализм и функциональность. Мы стремимся создавать вещи, которые будут служить годами и станут частью вашей повседневной жизни.</p>
-                    <p class="about-text">Мы сотрудничаем с независимыми авторами и небольшими мануфактурами, чтобы поддерживать локальное производство и уникальный дизайн.</p>
+                    <h2 class="section-title">Наша философия</h2>
+                    <p class="about-text">Мы создаём пространство, где дизайн встречается с функциональностью, а качество — с эстетикой. Каждая вещь в нашем каталоге проходит тщательный отбор и представляет собой образец современного искусства.</p>
+                    <p class="about-text">Наша миссия — привнести в повседневную жизнь элементы роскоши и утончённости, которые вдохновляют и радуют своих владельцев.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">брендов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5000+</div>
+                            <div class="stat-label">довольных клиентов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">года на рынке</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=90" alt="Наша мастерская" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Контакты -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact reveal">
         <div class="container">
             <h2 class="section-title">Контакты</h2>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3 class="contact-subtitle">Наши контакты</h3>
+                    <h3 class="contact-subtitle">Посетите наш бутик</h3>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <strong>Адрес</strong>
-                            <p>Москва, ул. Дизайнерская, д. 10</p>
+                            <p>Москва, Тверская ул., д. 15</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <strong>Email</strong>
-                            <p>hello@designergoods.ru</p>
+                            <p>showroom@designergoods.ru</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -160,16 +180,22 @@
                         <i class="fas fa-clock"></i>
                         <div>
                             <strong>Часы работы</strong>
-                            <p>Пн–Пт: 10:00–20:00<br>Сб–Вс: 11:00–18:00</p>
+                            <p>Пн–Сб: 10:00–22:00<br>Вс: 11:00–20:00</p>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <h3 class="contact-subtitle">Подпишитесь на рассылку</h3>
-                    <p>Получайте первыми информацию о новых коллекциях и специальных предложениях.</p>
-                    <form id="subscribe-form">
+                    <h3 class="contact-subtitle">Персональный подбор</h3>
+                    <p>Оставьте заявку, и наш стилист свяжется с вами для индивидуальной консультации.</p>
+                    <form id="consultation-form">
                         <div class="form-group">
-                            <input type="email" id="email" placeholder="Ваш email" required>
+                            <input type="text" id="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Телефон" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Ваши пожелания" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label class="checkbox">
@@ -177,10 +203,21 @@
                                 <span>Я соглашаюсь с политикой конфиденциальности</span>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Подписаться</button>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
                     </form>
-                    <div id="subscribe-message" class="message"></div>
+                    <div id="consultation-message" class="message"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Карта -->
+    <section class="map reveal">
+        <div class="container">
+            <h2 class="section-title">Мы на карте</h2>
+            <p class="section-subtitle">Посетите наш бутик в самом сердце Москвы</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.372951434774!2d37.60986031593029!3d55.755825280553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a738fa419%3A0x7c347d506b52311f!2z0KLQstC10YDRgdC60LDRjyDRg9C7LiwgMTUsINCc0L7RgdC60LLQsCwgMTA3MDQ1!5e0!3m2!1sru!2sru!4v1648121226783!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
@@ -194,15 +231,24 @@
                         <span class="logo-icon">✨</span>
                         <span class="logo-text">Designer Goods</span>
                     </a>
-                    <p class="footer-tagline">Дизайн, который говорит с душой.</p>
+                    <p class="footer-tagline">Искусство в каждой детали.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Навигация</h4>
+                    <h4>Каталог</h4>
                     <ul>
-                        <li><a href="#home">Главная</a></li>
-                        <li><a href="#catalog">Каталог</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#contact">Контакты</a></li>
+                        <li><a href="#">Одежда</a></li>
+                        <li><a href="#">Аксессуары</a></li>
+                        <li><a href="#">Часы</a></li>
+                        <li><a href="#">Ювелирные изделия</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат и обмен</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Конфиденциальность</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -231,7 +277,6 @@
             </div>
             <div class="modal-body">
                 <div class="cart-items">
-                    <!-- Товары будут добавляться динамически -->
                     <p class="empty-cart">Корзина пуста</p>
                 </div>
                 <div class="cart-total">
@@ -246,5 +291,14 @@
     </div>
 
     <script src="js/script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker зарегистрирован', reg))
+            .catch(err => console.log('Ошибка регистрации Service Worker', err));
+        });
+      }
+    </script>
 </body>
 </html>

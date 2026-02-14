@@ -43,11 +43,61 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let cart = [];
     const prices = {
-        '1': 4990,
-        '2': 8500,
-        '3': 3200,
-        '4': 2800
+        '1': 89500,
+        '2': 325000,
+        '3': 64800,
+        '4': 215000
     };
+
+    // Parallax for hero section
+    const heroImage = document.querySelector('.hero-image img');
+    if (heroImage) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxSpeed = 0.5;
+            heroImage.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        });
+    }
+
+    // Scroll indicator click
+    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const catalogSection = document.getElementById('catalog');
+            if (catalogSection) {
+                window.scrollTo({
+                    top: catalogSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+
+    // Scroll reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    if (revealElements.length) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
+
+    // Also observe product cards with delay
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach((card, index) => {
+        card.classList.add('reveal');
+        revealObserver.observe(card);
+        // Add delay for staggered animation
+        card.style.transitionDelay = `${index * 0.1}s`;
+    });
 
     // Open cart modal
     cartBtn.addEventListener('click', () => {
@@ -88,6 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             updateCart();
             showNotification(`Товар "${productName}" добавлен в корзину`);
+            // Fly animation
+            flyToCartAnimation(btn.closest('.product-card'), cartBtn);
         });
     });
 
@@ -221,6 +273,47 @@ document.addEventListener('DOMContentLoaded', function() {
             notification.style.transform = 'translateX(100%)';
             setTimeout(() => notification.remove(), 300);
         }, 3000);
+    }
+
+    function flyToCartAnimation(productCard, cartBtn) {
+        const img = productCard.querySelector('img');
+        if (!img) return;
+
+        const flyImg = img.cloneNode(true);
+        flyImg.style.cssText = `
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            z-index: 4000;
+            pointer-events: none;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.6s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        `;
+        document.body.appendChild(flyImg);
+
+        const imgRect = img.getBoundingClientRect();
+        const cartRect = cartBtn.getBoundingClientRect();
+
+        const startX = imgRect.left + imgRect.width / 2;
+        const startY = imgRect.top + imgRect.height / 2;
+        const endX = cartRect.left + cartRect.width / 2;
+        const endY = cartRect.top + cartRect.height / 2;
+
+        flyImg.style.left = `${startX - 25}px`;
+        flyImg.style.top = `${startY - 25}px`;
+        flyImg.style.transform = `translate(0, 0) scale(1)`;
+
+        requestAnimationFrame(() => {
+            flyImg.style.transform = `translate(${endX - startX}px, ${endY - startY}px) scale(0.3)`;
+            flyImg.style.opacity = '0.5';
+        });
+
+        setTimeout(() => {
+            flyImg.remove();
+        }, 600);
     }
 
     function showMessage(text, type) {
