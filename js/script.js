@@ -21,6 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
+                // Update active nav link if clicked link has nav-link class
+                if (this.classList.contains('nav-link')) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
                 // Close mobile menu if open
                 if (navList && navList.classList.contains('active')) {
                     navList.classList.remove('active');
@@ -38,6 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartCount = document.querySelector('.cart-count');
     const cartItemsContainer = document.querySelector('.cart-items');
     const totalPriceEl = document.querySelector('.total-price');
+    const modalFooter = document.querySelector('.modal-footer');
+    const modalBody = document.querySelector('.modal-body');
     const addToCartBtns = document.querySelectorAll('.add-to-cart');
     const emptyCartMsg = document.querySelector('.empty-cart');
 
@@ -46,7 +55,9 @@ document.addEventListener('DOMContentLoaded', function() {
         '1': 89500,
         '2': 325000,
         '3': 64800,
-        '4': 215000
+        '4': 215000,
+        '5': 24900,
+        '6': 38500
     };
 
     // Parallax for hero section
@@ -103,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cartBtn.addEventListener('click', () => {
         cartModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+        resetCartModalView();
     });
 
     // Close cart modal
@@ -218,16 +230,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function resetCartModalView() {
+        cartItemsContainer.style.display = 'block';
+        totalPriceEl.parentElement.style.display = 'flex';
+        modalFooter.style.display = 'flex';
+        const confirmation = document.querySelector('.order-confirmation');
+        if (confirmation) confirmation.remove();
+    }
+
     // Checkout button
     checkoutBtn.addEventListener('click', () => {
         if (cart.length === 0) {
             alert('Корзина пуста');
             return;
         }
-        alert(`Заказ оформлен на сумму ${totalPriceEl.textContent}. Спасибо за покупку!`);
-        cart = [];
-        updateCart();
-        closeCartModal();
+        const totalPrice = totalPriceEl.textContent;
+        // Hide cart items and footer
+        cartItemsContainer.style.display = 'none';
+        totalPriceEl.parentElement.style.display = 'none';
+        modalFooter.style.display = 'none';
+        // Create confirmation message
+        const confirmationHTML = `
+            <div class="order-confirmation" style="text-align: center; padding: 2rem;">
+                <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--color-gold); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--color-gold); margin-bottom: 1rem;">Заказ успешно оформлен!</h3>
+                <p style="margin-bottom: 1.5rem;">Спасибо за покупку на сумму <strong>${totalPrice}</strong>.</p>
+                <p style="margin-bottom: 2rem; color: var(--color-gray);">Наш менеджер свяжется с вами в ближайшее время для подтверждения заказа.</p>
+                <button id="return-to-home" class="btn btn-primary">Вернуться на главную</button>
+            </div>
+        `;
+        const confirmationEl = document.createElement('div');
+        confirmationEl.innerHTML = confirmationHTML;
+        modalBody.appendChild(confirmationEl);
+        // Add event listener to return button
+        document.getElementById('return-to-home').addEventListener('click', () => {
+            closeCartModal();
+            cart = [];
+            updateCart();
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Restore cart modal content
+            setTimeout(() => {
+                resetCartModalView();
+            }, 300);
+        });
     });
 
     // Newsletter form

@@ -362,6 +362,12 @@ a {
     margin-bottom: 1rem;
 }
 
+.products-cta {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
 /* About */
 .about {
     padding: 5rem 0;
