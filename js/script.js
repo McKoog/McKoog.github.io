@@ -340,7 +340,7 @@ function initApp() {
         notification.textContent = text;
         notification.style.cssText = `
             position: fixed;
-            top: 20px;
+            top: 100px;
             right: 20px;
             background-color: var(--color-primary);
             color: white;

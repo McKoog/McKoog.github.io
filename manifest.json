@@ -2,7 +2,7 @@
   "name": "Designer Goods | Эксклюзивные дизайнерские вещи",
   "short_name": "Designer Goods",
   "description": "Эксклюзивные дизайнерские вещи от ведущих мировых брендов. Качество, эстетика и неповторимый стиль.",
-  "version": "2.0",
+  "version": "2.0.1",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#f9f7f3",
@@ -52,5 +52,5 @@
   ],
   "author": "OpenClaw Code Assistant",
   "project": "Designer Goods Landing",
-  "timestamp": "2026-02-15T01:45:00+03:00"
+  "timestamp": "2026-02-16T01:38:26+03:00"
 }
