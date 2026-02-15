@@ -1,5 +1,6 @@
-// DOM Ready
-document.addEventListener('DOMContentLoaded', function() {
+// Main initialization function
+function initApp() {
+    console.log('Initializing Designer Goods app...');
     // Mobile Navigation Toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navList = document.querySelector('.nav-list');
@@ -49,6 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalBody = document.querySelector('.modal-body');
     const addToCartBtns = document.querySelectorAll('.add-to-cart');
     const emptyCartMsg = document.querySelector('.empty-cart');
+    
+    console.log('Cart elements:', {
+        cartBtn: !!cartBtn,
+        cartModal: !!cartModal,
+        closeCartBtn: !!closeCartBtn,
+        modalClose: !!modalClose,
+        checkoutBtn: !!checkoutBtn,
+        cartCount: !!cartCount,
+        cartItemsContainer: !!cartItemsContainer,
+        totalPriceEl: !!totalPriceEl,
+        modalFooter: !!modalFooter,
+        modalBody: !!modalBody,
+        addToCartBtns: addToCartBtns.length,
+        emptyCartMsg: !!emptyCartMsg
+    });
 
     let cart = [];
     const prices = {
@@ -371,26 +387,83 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // Set active nav link on scroll
-    window.addEventListener('scroll', () => {
-        const sections = ['home', 'catalog', 'about', 'contact'];
-        const scrollPosition = window.scrollY + 100;
-
-        sections.forEach(section => {
-            const element = document.getElementById(section);
-            if (!element) return;
-
-            const offsetTop = element.offsetTop;
-            const offsetBottom = offsetTop + element.offsetHeight;
-
-            const link = document.querySelector(`.nav-link[href="#${section}"]`);
-            if (!link) return;
-
-            if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
+    // Set active nav link on scroll using IntersectionObserver
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = ['home', 'catalog', 'about', 'contact'];
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
             }
         });
+    }, observerOptions);
+    
+    sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) observer.observe(section);
     });
-});
+    
+    // Product scroll buttons
+    const productsGrid = document.querySelector('.products-grid');
+    const productsContainer = document.querySelector('.products-container');
+    if (productsGrid && productsContainer) {
+        const scrollLeftBtn = document.createElement('button');
+        scrollLeftBtn.className = 'scroll-btn left';
+        scrollLeftBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        scrollLeftBtn.setAttribute('aria-label', 'Прокрутить влево');
+        
+        const scrollRightBtn = document.createElement('button');
+        scrollRightBtn.className = 'scroll-btn right';
+        scrollRightBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        scrollRightBtn.setAttribute('aria-label', 'Прокрутить вправо');
+        
+        productsContainer.appendChild(scrollLeftBtn);
+        productsContainer.appendChild(scrollRightBtn);
+        
+        const scrollAmount = 300;
+        scrollLeftBtn.addEventListener('click', () => {
+            productsGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+        scrollRightBtn.addEventListener('click', () => {
+            productsGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+        
+        // Hide buttons when at edges
+        const updateScrollButtons = () => {
+            const scrollLeft = productsGrid.scrollLeft;
+            const maxScroll = productsGrid.scrollWidth - productsGrid.clientWidth;
+            
+            scrollLeftBtn.classList.toggle('hidden', scrollLeft <= 0);
+            scrollRightBtn.classList.toggle('hidden', scrollLeft >= maxScroll - 10);
+        };
+        
+        productsGrid.addEventListener('scroll', updateScrollButtons);
+        window.addEventListener('resize', updateScrollButtons);
+        updateScrollButtons();
+        
+        console.log('Scroll buttons added');
+    }
+    
+    console.log('Navigation observer initialized');
+}
+
+// Start the app when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    // DOM already loaded
+    initApp();
+}
