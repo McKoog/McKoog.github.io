@@ -1,6 +1,15 @@
 // Main initialization function
 function initApp() {
     console.log('Initializing Designer Goods app...');
+    
+    // Debug: log all critical elements
+    console.debug('Debug elements:', {
+        productsContainer: document.querySelector('.products-container'),
+        productsGrid: document.querySelector('.products-grid'),
+        cartModal: document.getElementById('cart-modal'),
+        addToCartButtons: document.querySelectorAll('.add-to-cart').length,
+        navLinks: document.querySelectorAll('.nav-link').length
+    });
     // Mobile Navigation Toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navList = document.querySelector('.nav-list');
@@ -461,9 +470,33 @@ function initApp() {
 }
 
 // Start the app when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApp);
-} else {
-    // DOM already loaded
-    initApp();
+function startApp() {
+    try {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                try {
+                    initApp();
+                } catch (err) {
+                    console.error('Error during initApp:', err);
+                }
+            });
+        } else {
+            // DOM already loaded
+            try {
+                initApp();
+            } catch (err) {
+                console.error('Error during initApp:', err);
+            }
+        }
+    } catch (err) {
+        console.error('Error starting app:', err);
+    }
 }
+
+// Global error handler
+window.addEventListener('error', function(event) {
+    console.error('Global error:', event.error);
+});
+
+// Start the application
+startApp();
