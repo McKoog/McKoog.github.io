@@ -372,6 +372,7 @@ a {
     transition: var(--transition-slow);
     transform-style: preserve-3d;
     perspective: 1000px;
+    opacity: 1;
 }
 
 .product-card:hover {

@@ -126,21 +126,24 @@ function initApp() {
         revealElements.forEach(el => revealObserver.observe(el));
     }
 
-    // Also observe product cards with delay
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach((card, index) => {
-        card.classList.add('reveal');
-        revealObserver.observe(card);
-        // Add delay for staggered animation
-        card.style.transitionDelay = `${index * 0.1}s`;
-    });
+    // Product cards are visible by default, no reveal needed
+    // Keep them visible for immediate display
 
     // Open cart modal
-    cartBtn.addEventListener('click', () => {
-        cartModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        resetCartModalView();
-    });
+    if (!cartBtn) {
+        console.error('Cart button not found');
+    } else {
+        cartBtn.addEventListener('click', () => {
+            console.log('Cart button clicked');
+            if (!cartModal) {
+                console.error('Cart modal not found');
+                return;
+            }
+            cartModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            resetCartModalView();
+        });
+    }
 
     // Close cart modal
     const closeCartModal = () => {
@@ -148,18 +151,23 @@ function initApp() {
         document.body.style.overflow = 'auto';
     };
 
-    closeCartBtn.addEventListener('click', closeCartModal);
-    modalClose.addEventListener('click', closeCartModal);
-    cartModal.addEventListener('click', (e) => {
-        if (e.target === cartModal) closeCartModal();
-    });
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartModal);
+    if (modalClose) modalClose.addEventListener('click', closeCartModal);
+    if (cartModal) {
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) closeCartModal();
+        });
+    }
 
     // Add to cart
     addToCartBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+            console.log('Add to cart clicked');
             const productId = btn.getAttribute('data-product');
+            console.log('Product ID:', productId);
             const productName = btn.closest('.product-card').querySelector('.product-name').textContent;
             const price = prices[productId];
+            console.log('Price:', price);
 
             const existing = cart.find(item => item.id === productId);
             if (existing) {
@@ -264,7 +272,10 @@ function initApp() {
     }
 
     // Checkout button
-    checkoutBtn.addEventListener('click', () => {
+    if (!checkoutBtn) {
+        console.error('Checkout button not found');
+    } else {
+        checkoutBtn.addEventListener('click', () => {
         if (cart.length === 0) {
             alert('Корзина пуста');
             return;
@@ -300,6 +311,7 @@ function initApp() {
             }, 300);
         });
     });
+    }
 
     // Newsletter form
     const subscribeForm = document.getElementById('subscribe-form');
@@ -402,14 +414,16 @@ function initApp() {
     
     const observerOptions = {
         root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0.1
+        rootMargin: '-10% 0px -50% 0px',
+        threshold: 0.2
     };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            console.log('Section observed:', entry.target.id, 'isIntersecting:', entry.isIntersecting);
             if (entry.isIntersecting) {
                 const id = entry.target.id;
+                console.log('Activating nav link for:', id);
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${id}`) {
