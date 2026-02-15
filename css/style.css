@@ -1094,6 +1094,14 @@ a {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+    .contact-form {
+        padding: 1.5rem;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
     .hero-title {
         font-size: 2.8rem;
     }
@@ -1142,6 +1150,12 @@ a {
     }
     .contact-form {
         padding: 1.5rem;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        overflow-x: hidden;
     }
     .map-container iframe {
         height: 250px;
