@@ -1,329 +1,440 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer Goods | Эксклюзивные дизайнерские вещи</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="Galactic Nexus — A deep space colony management strategy game. Build, research, trade, and lead your colony to prosperity among the stars.">
+    <title>Galactic Nexus — Space Colony Manager</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta name="description" content="Эксклюзивные дизайнерские вещи: одежда, аксессуары, предметы интерьера от мировых брендов. Доставка по России.">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/panels.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
-    <!-- Шапка -->
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="#" class="logo">
-                    <span class="logo-icon">✨</span>
-                    <span class="logo-text">Designer Goods</span>
-                </a>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li><a href="#home" class="nav-link active">Главная</a></li>
-                        <li><a href="#catalog" class="nav-link">Каталог</a></li>
-                        <li><a href="#about" class="nav-link">О нас</a></li>
-                        <li><a href="#contact" class="nav-link">Контакты</a></li>
-                    </ul>
-                    <button class="nav-toggle" aria-label="Меню">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </nav>
-                <div class="header-actions">
-                    <button class="cart-btn" aria-label="Корзина">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-count">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- Stars background -->
+    <canvas id="stars-canvas"></canvas>
 
-    <!-- Герой-секция -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Искусство в деталях</h1>
-                <p class="hero-subtitle">Эксклюзивные дизайнерские вещи от ведущих мировых брендов. Качество, эстетика и неповторимый стиль.</p>
-                <a href="#catalog" class="btn btn-primary">Исследовать коллекцию</a>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <span class="logo-icon">✦</span>
+                <h1>GALACTIC NEXUS</h1>
+                <p class="loading-subtitle">SPACE COLONY MANAGER</p>
             </div>
-            <div class="hero-image">
-                <img src="assets/images/hero-boutique.jpg" alt="Дизайнерский бутик" loading="lazy">
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loading-bar"></div>
             </div>
+            <p class="loading-text" id="loading-text">Initializing systems...</p>
         </div>
-        <div class="hero-scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
+    </div>
 
-    <!-- Популярные товары -->
-    <section id="catalog" class="products reveal">
-        <div class="container">
-            <h2 class="section-title">Эксклюзивные товары</h2>
-            <p class="section-subtitle">Тщательно отобранные предметы роскоши</p>
-            <div class="products-container">
-                <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Сумка Gucci" loading="lazy">
-                        <span class="product-badge">Бестселлер</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Сумка Gucci</h3>
-                        <p class="product-description">Кожаная сумка с фирменным узором, золотая фурнитура, просторное отделение.</p>
-                        <div class="product-price">89 500 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="1">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Швейцарские часы Rolex" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Часы Rolex</h3>
-                        <p class="product-description">Автоматический механизм, сапфировое стекло, водонепроницаемость 100м.</p>
-                        <div class="product-price">325 000 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="2">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Кроссовки Prada" loading="lazy">
-                        <span class="product-badge">Новая коллекция</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Кроссовки Prada</h3>
-                        <p class="product-description">Ручная работа, итальянская кожа, уникальный дизайн, комфортная колодка.</p>
-                        <div class="product-price">64 800 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="3">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Кольцо Cartier" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Кольцо Cartier</h3>
-                        <p class="product-description">Белое золото, бриллианты, ручная огранка, ограниченная серия.</p>
-                        <div class="product-price">215 000 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="4">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Солнцезащитные очки Ray-Ban" loading="lazy">
-                        <span class="product-badge">Бестселлер</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Очки Ray-Ban</h3>
-                        <p class="product-description">Классические авиаторы, поляризованные линзы, металлическая оправа, защита от UV 400.</p>
-                        <div class="product-price">24 900 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="5">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Кожаный ремень Hermès" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Ремень Hermès</h3>
-                        <p class="product-description">Натуральная кожа, ручная строчка, золотая фурнитура, регулируемая длина.</p>
-                        <div class="product-price">38 500 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="6">В корзину</button>
-                    </div>
-                </div>
+    <!-- Main Menu -->
+    <div id="main-menu" class="main-menu hidden">
+        <div class="menu-content">
+            <div class="menu-logo">
+                <div class="logo-glow"></div>
+                <span class="menu-logo-icon">✦</span>
+                <h1>GALACTIC NEXUS</h1>
+                <p class="menu-subtitle">SPACE COLONY MANAGER</p>
             </div>
+            <div class="menu-buttons">
+                <button class="menu-btn primary-btn" id="btn-new-game">
+                    <span class="btn-icon">🚀</span> NEW COLONY
+                </button>
+                <button class="menu-btn" id="btn-continue" style="display:none;">
+                    <span class="btn-icon">📂</span> CONTINUE
+                </button>
+                <button class="menu-btn" id="btn-settings-menu">
+                    <span class="btn-icon">⚙️</span> SETTINGS
+                </button>
             </div>
-            <div class="products-cta">
-                <a href="#contact" class="btn btn-primary">Смотреть всю коллекцию</a>
-            </div>
+            <p class="menu-version">v1.0 — Built with ✦ among the stars</p>
         </div>
-    </section>
+    </div>
 
-    <!-- О нас -->
-    <section id="about" class="about reveal">
-        <div class="container">
-            <div class="about-inner">
-                <div class="about-content">
-                    <h2 class="section-title">Наша философия</h2>
-                    <p class="about-text">Мы создаём пространство, где дизайн встречается с функциональностью, а качество — с эстетикой. Каждая вещь в нашем каталоге проходит тщательный отбор и представляет собой образец современного искусства.</p>
-                    <p class="about-text">Наша миссия — привнести в повседневную жизнь элементы роскоши и утончённости, которые вдохновляют и радуют своих владельцев.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number">150+</div>
-                            <div class="stat-label">брендов</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">5000+</div>
-                            <div class="stat-label">довольных клиентов</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">3</div>
-                            <div class="stat-label">года на рынке</div>
-                        </div>
+    <!-- Colony Naming Modal -->
+    <div id="colony-modal" class="modal hidden">
+        <div class="modal-content colony-setup">
+            <h2>🌟 Establish Your Colony</h2>
+            <div class="form-group">
+                <label for="colony-name-input">Colony Name</label>
+                <input type="text" id="colony-name-input" placeholder="Enter colony name..." maxlength="24" value="New Haven">
+            </div>
+            <div class="form-group">
+                <label>Starting Planet</label>
+                <div class="planet-select" id="planet-select">
+                    <div class="planet-option selected" data-planet="temperate">
+                        <span class="planet-emoji">🌍</span>
+                        <strong>Temperate World</strong>
+                        <small>Balanced resources, mild climate</small>
+                    </div>
+                    <div class="planet-option" data-planet="arid">
+                        <span class="planet-emoji">🏜️</span>
+                        <strong>Arid World</strong>
+                        <small>Rich minerals, scarce water</small>
+                    </div>
+                    <div class="planet-option" data-planet="frozen">
+                        <span class="planet-emoji">❄️</span>
+                        <strong>Frozen World</strong>
+                        <small>Abundant energy, harsh conditions</small>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="assets/images/about-workshop.jpg" alt="Наша мастерская" loading="lazy">
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Контакты -->
-    <section id="contact" class="contact reveal">
-        <div class="container">
-            <h2 class="section-title">Контакты</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 class="contact-subtitle">Посетите наш бутик</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Адрес</strong>
-                            <p>Москва, Тверская ул., д. 15</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email</strong>
-                            <p>showroom@designergoods.ru</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Телефон</strong>
-                            <p>+7 (495) 123-45-67</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <strong>Часы работы</strong>
-                            <p>Пн–Сб: 10:00–22:00<br>Вс: 11:00–20:00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3 class="contact-subtitle">Персональный подбор</h3>
-                    <p>Оставьте заявку, и наш стилист свяжется с вами для индивидуальной консультации.</p>
-                    <form id="consultation-form">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Ваше имя" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" placeholder="Телефон" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Ваши пожелания" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label class="checkbox">
-                                <input type="checkbox" required>
-                                <span>Я соглашаюсь с политикой конфиденциальности</span>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
-                    </form>
-                    <div id="consultation-message" class="message"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Карта -->
-    <section class="map reveal">
-        <div class="container">
-            <h2 class="section-title">Мы на карте</h2>
-            <p class="section-subtitle">Посетите наш бутик в самом сердце Москвы</p>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.372951434774!2d37.60986031593029!3d55.755825280553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a738fa419%3A0x7c347d506b52311f!2z0KLQstC10YDRgdC60LDRjyDRg9C7LiwgMTUsINCc0L7RgdC60LLQsCwgMTA3MDQ1!5e0!3m2!1sru!2sru!4v1648121226783!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <span class="logo-icon">✨</span>
-                        <span class="logo-text">Designer Goods</span>
-                    </a>
-                    <p class="footer-tagline">Искусство в каждой детали.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Каталог</h4>
-                    <ul>
-                        <li><a href="#">Одежда</a></li>
-                        <li><a href="#">Аксессуары</a></li>
-                        <li><a href="#">Часы</a></li>
-                        <li><a href="#">Ювелирные изделия</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Помощь</h4>
-                    <ul>
-                        <li><a href="#">Доставка и оплата</a></li>
-                        <li><a href="#">Возврат и обмен</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Конфиденциальность</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Социальные сети</h4>
-                    <ul class="social-links">
-                        <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i> Telegram</a></li>
-                        <li><a href="#" aria-label="VK"><i class="fab fa-vk"></i> VK</a></li>
-                        <li><a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i> Pinterest</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Designer Goods. Все права защищены.</p>
-                <p><a href="#">Политика конфиденциальности</a> | <a href="#">Условия использования</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Модальное окно корзины -->
-    <div class="modal" id="cart-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Корзина</h3>
-                <button class="modal-close" aria-label="Закрыть">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="cart-items">
-                    <p class="empty-cart">Корзина пуста</p>
-                </div>
-                <div class="cart-total">
-                    <strong>Итого:</strong> <span class="total-price">0 ₽</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" id="close-cart">Продолжить покупки</button>
-                <button class="btn btn-primary" id="checkout">Оформить заказ</button>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="btn-cancel-colony">Cancel</button>
+                <button class="btn btn-primary" id="btn-start-colony">Launch Colony 🚀</button>
             </div>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
-            .then(reg => console.log('Service Worker зарегистрирован', reg))
-            .catch(err => console.log('Ошибка регистрации Service Worker', err));
-        });
-      }
-    </script>
+    <!-- Game UI -->
+    <div id="game-ui" class="game-ui hidden">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <span class="colony-icon">✦</span>
+                <h2 class="colony-name" id="colony-name-display">New Haven</h2>
+                <span class="turn-badge" id="turn-display">Turn 1</span>
+                <span class="season-badge" id="season-display">🌱 Spring</span>
+            </div>
+            <div class="top-bar-resources">
+                <div class="resource-item" title="Energy">
+                    <span class="res-icon">⚡</span>
+                    <span class="res-value" id="res-energy">100</span>
+                    <span class="res-rate" id="rate-energy">+5</span>
+                </div>
+                <div class="resource-item" title="Minerals">
+                    <span class="res-icon">💎</span>
+                    <span class="res-value" id="res-minerals">80</span>
+                    <span class="res-rate" id="rate-minerals">+3</span>
+                </div>
+                <div class="resource-item" title="Food">
+                    <span class="res-icon">🌾</span>
+                    <span class="res-value" id="res-food">120</span>
+                    <span class="res-rate" id="rate-food">+8</span>
+                </div>
+                <div class="resource-item" title="Credits">
+                    <span class="res-icon">💰</span>
+                    <span class="res-value" id="res-credits">200</span>
+                    <span class="res-rate" id="rate-credits">+2</span>
+                </div>
+                <div class="resource-item" title="Research Points">
+                    <span class="res-icon">🔬</span>
+                    <span class="res-value" id="res-research">0</span>
+                    <span class="res-rate" id="rate-research">+1</span>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <div class="population-display" title="Population">
+                    <span class="pop-icon">👥</span>
+                    <span id="pop-current">10</span>/<span id="pop-max">20</span>
+                </div>
+                <div class="morale-display" title="Colony Morale">
+                    <span class="morale-icon">😊</span>
+                    <span id="morale-value">75</span>%
+                </div>
+                <button class="btn-icon-only" id="btn-settings" title="Settings">⚙️</button>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="overview">
+                <span class="tab-icon">🏠</span>
+                <span class="tab-label">Overview</span>
+            </button>
+            <button class="nav-tab" data-tab="buildings">
+                <span class="tab-icon">🏗️</span>
+                <span class="tab-label">Buildings</span>
+            </button>
+            <button class="nav-tab" data-tab="research">
+                <span class="tab-icon">🔬</span>
+                <span class="tab-label">Research</span>
+            </button>
+            <button class="nav-tab" data-tab="population">
+                <span class="tab-icon">👥</span>
+                <span class="tab-label">Population</span>
+            </button>
+            <button class="nav-tab" data-tab="trade">
+                <span class="tab-icon">📊</span>
+                <span class="tab-label">Trade</span>
+            </button>
+            <button class="nav-tab" data-tab="missions">
+                <span class="tab-icon">🎯</span>
+                <span class="tab-label">Missions</span>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Overview Panel -->
+            <section class="panel" id="panel-overview">
+                <div class="panel-grid overview-grid">
+                    <!-- Colony Summary -->
+                    <div class="card colony-summary-card">
+                        <h3>📡 Colony Status</h3>
+                        <div class="status-grid" id="colony-status-grid">
+                            <div class="status-item">
+                                <span class="status-label">Colony Level</span>
+                                <span class="status-value" id="stat-level">1</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Buildings</span>
+                                <span class="status-value" id="stat-buildings">0</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Technologies</span>
+                                <span class="status-value" id="stat-techs">0</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Missions Done</span>
+                                <span class="status-value" id="stat-missions">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resource Chart -->
+                    <div class="card resource-chart-card">
+                        <h3>📈 Resource Trend</h3>
+                        <canvas id="resource-chart" width="400" height="200"></canvas>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card quick-actions-card">
+                        <h3>⚡ Quick Actions</h3>
+                        <div class="quick-actions">
+                            <button class="quick-btn" id="btn-next-turn">
+                                <span class="qb-icon">⏩</span>
+                                <span>Next Turn</span>
+                            </button>
+                            <button class="quick-btn" id="btn-auto-assign">
+                                <span class="qb-icon">🤖</span>
+                                <span>Auto-Assign Workers</span>
+                            </button>
+                            <button class="quick-btn" id="btn-quick-save">
+                                <span class="qb-icon">💾</span>
+                                <span>Quick Save</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Event Log -->
+                    <div class="card event-log-card">
+                        <h3>📜 Colony Log</h3>
+                        <div class="event-log" id="event-log">
+                            <div class="log-entry log-info">Colony established. Welcome, Governor!</div>
+                        </div>
+                    </div>
+
+                    <!-- Advisors -->
+                    <div class="card advisors-card">
+                        <h3>👔 Advisors</h3>
+                        <div class="advisors-list" id="advisors-list">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Buildings Panel -->
+            <section class="panel hidden" id="panel-buildings">
+                <div class="panel-header">
+                    <h3>🏗️ Colony Infrastructure</h3>
+                    <div class="panel-header-actions">
+                        <select id="building-filter" class="select-styled">
+                            <option value="all">All Categories</option>
+                            <option value="production">Production</option>
+                            <option value="housing">Housing</option>
+                            <option value="science">Science</option>
+                            <option value="military">Military</option>
+                            <option value="special">Special</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="buildings-grid" id="buildings-grid">
+                    <!-- Filled by JS -->
+                </div>
+            </section>
+
+            <!-- Research Panel -->
+            <section class="panel hidden" id="panel-research">
+                <div class="panel-header">
+                    <h3>🔬 Technology Research</h3>
+                    <div class="research-progress-bar">
+                        <span id="current-research-name">No active research</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="research-progress-fill" style="width:0%"></div>
+                        </div>
+                        <span id="research-progress-text">0%</span>
+                    </div>
+                </div>
+                <div class="tech-tree-container" id="tech-tree">
+                    <!-- Filled by JS -->
+                </div>
+            </section>
+
+            <!-- Population Panel -->
+            <section class="panel hidden" id="panel-population">
+                <div class="panel-header">
+                    <h3>👥 Population Management</h3>
+                </div>
+                <div class="pop-grid">
+                    <div class="card pop-overview-card">
+                        <h4>Population Overview</h4>
+                        <div class="pop-stats" id="pop-stats">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                    <div class="card pop-assignment-card">
+                        <h4>Workforce Assignment</h4>
+                        <div class="workforce-slots" id="workforce-slots">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                    <div class="card pop-morale-card">
+                        <h4>Morale Factors</h4>
+                        <div class="morale-factors" id="morale-factors">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                    <div class="card pop-growth-card">
+                        <h4>Growth Forecast</h4>
+                        <div id="growth-forecast">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trade Panel -->
+            <section class="panel hidden" id="panel-trade">
+                <div class="panel-header">
+                    <h3>📊 Galactic Trade Hub</h3>
+                </div>
+                <div class="trade-grid">
+                    <div class="card market-card">
+                        <h4>💱 Market Prices</h4>
+                        <div class="market-table" id="market-table">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                    <div class="card trade-action-card">
+                        <h4>🔄 Trade</h4>
+                        <div class="trade-form" id="trade-form">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                    <div class="card trade-history-card">
+                        <h4>📋 Trade History</h4>
+                        <div class="trade-history" id="trade-history">
+                            <p class="empty-msg">No trades yet</p>
+                        </div>
+                    </div>
+                    <div class="card trade-routes-card">
+                        <h4>🛤️ Trade Routes</h4>
+                        <div id="trade-routes">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Missions Panel -->
+            <section class="panel hidden" id="panel-missions">
+                <div class="panel-header">
+                    <h3>🎯 Colony Missions</h3>
+                </div>
+                <div class="missions-grid">
+                    <div class="card active-missions-card">
+                        <h4>⚡ Active Missions</h4>
+                        <div id="active-missions">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                    <div class="card available-missions-card">
+                        <h4>📋 Available Missions</h4>
+                        <div id="available-missions">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                    <div class="card completed-missions-card">
+                        <h4>✅ Completed</h4>
+                        <div id="completed-missions">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Next Turn Button (floating) -->
+        <button class="floating-next-turn" id="floating-next-turn" title="Advance to next turn">
+            <span>⏩</span> NEXT TURN
+        </button>
+    </div>
+
+    <!-- Event Modal -->
+    <div id="event-modal" class="modal hidden">
+        <div class="modal-content event-modal-content">
+            <div class="event-header" id="event-header">
+                <span class="event-icon" id="event-icon">⚠️</span>
+                <h2 id="event-title">Event Title</h2>
+            </div>
+            <p class="event-description" id="event-description">Event description goes here.</p>
+            <div class="event-choices" id="event-choices">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content settings-content">
+            <h2>⚙️ Settings</h2>
+            <div class="settings-group">
+                <label class="setting-item">
+                    <span>🔊 Sound Effects</span>
+                    <input type="checkbox" id="setting-sound" checked>
+                </label>
+                <label class="setting-item">
+                    <span>🎵 Music</span>
+                    <input type="checkbox" id="setting-music" checked>
+                </label>
+                <label class="setting-item">
+                    <span>✨ Particles</span>
+                    <input type="checkbox" id="setting-particles" checked>
+                </label>
+                <label class="setting-item">
+                    <span>⏩ Auto-save</span>
+                    <input type="checkbox" id="setting-autosave" checked>
+                </label>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-danger" id="btn-reset-game">🗑️ Reset Game</button>
+                <button class="btn btn-secondary" id="btn-export-save">📤 Export Save</button>
+                <button class="btn btn-secondary" id="btn-import-save">📥 Import Save</button>
+                <button class="btn btn-primary" id="btn-close-settings">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/resources.js"></script>
+    <script src="js/buildings.js"></script>
+    <script src="js/research.js"></script>
+    <script src="js/population.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/trade.js"></script>
+    <script src="js/missions.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html>
