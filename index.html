@@ -1,329 +1,394 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer Goods | Эксклюзивные дизайнерские вещи</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>BMW FANS | The Ultimate Driving Machine</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta name="description" content="Эксклюзивные дизайнерские вещи: одежда, аксессуары, предметы интерьера от мировых брендов. Доставка по России.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <!-- Шапка -->
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="#" class="logo">
-                    <span class="logo-icon">✨</span>
-                    <span class="logo-text">Designer Goods</span>
-                </a>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li><a href="#home" class="nav-link active">Главная</a></li>
-                        <li><a href="#catalog" class="nav-link">Каталог</a></li>
-                        <li><a href="#about" class="nav-link">О нас</a></li>
-                        <li><a href="#contact" class="nav-link">Контакты</a></li>
-                    </ul>
-                    <button class="nav-toggle" aria-label="Меню">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </nav>
-                <div class="header-actions">
-                    <button class="cart-btn" aria-label="Корзина">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-count">0</span>
-                    </button>
-                </div>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fas fa-b"></i></span>
+                <span class="logo-text">BMW FANS</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#models">Models</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Герой-секция -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Искусство в деталях</h1>
-                <p class="hero-subtitle">Эксклюзивные дизайнерские вещи от ведущих мировых брендов. Качество, эстетика и неповторимый стиль.</p>
-                <a href="#catalog" class="btn btn-primary">Исследовать коллекцию</a>
-            </div>
-            <div class="hero-image">
-                <img src="assets/images/hero-boutique.jpg" alt="Дизайнерский бутик" loading="lazy">
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-fade-up">THE ULTIMATE<br>DRIVING MACHINE</h1>
+            <p class="hero-subtitle animate-fade-up">Experience the passion, performance, and precision of BMW</p>
+            <div class="hero-buttons animate-fade-up">
+                <a href="#models" class="btn btn-primary">Explore Models</a>
+                <a href="#history" class="btn btn-secondary">Our Legacy</a>
             </div>
         </div>
-        <div class="hero-scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- Популярные товары -->
-    <section id="catalog" class="products reveal">
-        <div class="container">
-            <h2 class="section-title">Эксклюзивные товары</h2>
-            <p class="section-subtitle">Тщательно отобранные предметы роскоши</p>
-            <div class="products-container">
-                <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Сумка Gucci" loading="lazy">
-                        <span class="product-badge">Бестселлер</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Сумка Gucci</h3>
-                        <p class="product-description">Кожаная сумка с фирменным узором, золотая фурнитура, просторное отделение.</p>
-                        <div class="product-price">89 500 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="1">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Швейцарские часы Rolex" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Часы Rolex</h3>
-                        <p class="product-description">Автоматический механизм, сапфировое стекло, водонепроницаемость 100м.</p>
-                        <div class="product-price">325 000 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="2">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Кроссовки Prada" loading="lazy">
-                        <span class="product-badge">Новая коллекция</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Кроссовки Prada</h3>
-                        <p class="product-description">Ручная работа, итальянская кожа, уникальный дизайн, комфортная колодка.</p>
-                        <div class="product-price">64 800 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="3">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Кольцо Cartier" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Кольцо Cartier</h3>
-                        <p class="product-description">Белое золото, бриллианты, ручная огранка, ограниченная серия.</p>
-                        <div class="product-price">215 000 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="4">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Солнцезащитные очки Ray-Ban" loading="lazy">
-                        <span class="product-badge">Бестселлер</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Очки Ray-Ban</h3>
-                        <p class="product-description">Классические авиаторы, поляризованные линзы, металлическая оправа, защита от UV 400.</p>
-                        <div class="product-price">24 900 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="5">В корзину</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Кожаный ремень Hermès" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Ремень Hermès</h3>
-                        <p class="product-description">Натуральная кожа, ручная строчка, золотая фурнитура, регулируемая длина.</p>
-                        <div class="product-price">38 500 ₽</div>
-                        <button class="btn btn-outline add-to-cart" data-product="6">В корзину</button>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="products-cta">
-                <a href="#contact" class="btn btn-primary">Смотреть всю коллекцию</a>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
             </div>
         </div>
     </section>
 
-    <!-- О нас -->
-    <section id="about" class="about reveal">
+    <section class="models" id="models">
         <div class="container">
-            <div class="about-inner">
-                <div class="about-content">
-                    <h2 class="section-title">Наша философия</h2>
-                    <p class="about-text">Мы создаём пространство, где дизайн встречается с функциональностью, а качество — с эстетикой. Каждая вещь в нашем каталоге проходит тщательный отбор и представляет собой образец современного искусства.</p>
-                    <p class="about-text">Наша миссия — привнести в повседневную жизнь элементы роскоши и утончённости, которые вдохновляют и радуют своих владельцев.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number">150+</div>
-                            <div class="stat-label">брендов</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">5000+</div>
-                            <div class="stat-label">довольных клиентов</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">3</div>
-                            <div class="stat-label">года на рынке</div>
-                        </div>
+            <h2 class="section-title animate-on-scroll">Featured Models</h2>
+            <p class="section-subtitle animate-on-scroll">Discover the lineup that defines automotive excellence</p>
+            <div class="models-grid">
+                <div class="model-card animate-on-scroll">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=600&q=80" alt="BMW M3">
+                    </div>
+                    <div class="model-info">
+                        <h3>BMW M3</h3>
+                        <p>Performance Sedan</p>
+                        <span class="price">From $74,300</span>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="assets/images/about-workshop.jpg" alt="Наша мастерская" loading="lazy">
+                <div class="model-card animate-on-scroll">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600&q=80" alt="BMW M4">
+                    </div>
+                    <div class="model-info">
+                        <h3>BMW M4</h3>
+                        <p>Performance Coupe</p>
+                        <span class="price">From $78,200</span>
+                    </div>
+                </div>
+                <div class="model-card animate-on-scroll">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80" alt="BMW M5">
+                    </div>
+                    <div class="model-info">
+                        <h3>BMW M5</h3>
+                        <p>High Performance Sedan</p>
+                        <span class="price">From $109,900</span>
+                    </div>
+                </div>
+                <div class="model-card animate-on-scroll">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="BMW X5">
+                    </div>
+                    <div class="model-info">
+                        <h3>BMW X5</h3>
+                        <p>Luxury SAV</p>
+                        <span class="price">From $65,400</span>
+                    </div>
+                </div>
+                <div class="model-card animate-on-scroll">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80" alt="BMW X7">
+                    </div>
+                    <div class="model-info">
+                        <h3>BMW X7</h3>
+                        <p>Luxury SUV</p>
+                        <span class="price">From $92,600</span>
+                    </div>
+                </div>
+                <div class="model-card animate-on-scroll">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=600&q=80" alt="BMW i8">
+                    </div>
+                    <div class="model-info">
+                        <h3>BMW i8</h3>
+                        <p>Hybrid Sports Car</p>
+                        <span class="price">From $147,500</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Контакты -->
-    <section id="contact" class="contact reveal">
+    <section class="history" id="history">
         <div class="container">
-            <h2 class="section-title">Контакты</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 class="contact-subtitle">Посетите наш бутик</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Адрес</strong>
-                            <p>Москва, Тверская ул., д. 15</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email</strong>
-                            <p>showroom@designergoods.ru</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Телефон</strong>
-                            <p>+7 (495) 123-45-67</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <strong>Часы работы</strong>
-                            <p>Пн–Сб: 10:00–22:00<br>Вс: 11:00–20:00</p>
-                        </div>
+            <h2 class="section-title animate-on-scroll">Our Legacy</h2>
+            <p class="section-subtitle animate-on-scroll">A century of innovation and excellence</p>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">1916</div>
+                    <div class="timeline-content">
+                        <h3>Bayerische Motoren Werke Founded</h3>
+                        <p>BMW began as an aircraft engine manufacturer in Munich, Germany</p>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3 class="contact-subtitle">Персональный подбор</h3>
-                    <p>Оставьте заявку, и наш стилист свяжется с вами для индивидуальной консультации.</p>
-                    <form id="consultation-form">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Ваше имя" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" placeholder="Телефон" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Ваши пожелания" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label class="checkbox">
-                                <input type="checkbox" required>
-                                <span>Я соглашаюсь с политикой конфиденциальности</span>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
-                    </form>
-                    <div id="consultation-message" class="message"></div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">1923</div>
+                    <div class="timeline-content">
+                        <h3>First Motorcycle - R32</h3>
+                        <p>BMW produced its first motorcycle, establishing the boxer engine tradition</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">1928</div>
+                    <div class="timeline-content">
+                        <h3>Automobile Production Begins</h3>
+                        <p>Acquired Eisenach plant and began producing automobiles</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">1936</div>
+                    <div class="timeline-content">
+                        <h3>BMW 328 Launched</h3>
+                        <p>The legendary sports car that dominated pre-war racing</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">1972</div>
+                    <div class="timeline-content">
+                        <h3>BMW M Division Established</h3>
+                        <p>M GmbH created to develop high-performance vehicles</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">1977</div>
+                    <div class="timeline-content">
+                        <h3>BMW 7 Series Introduced</h3>
+                        <p>The flagship luxury sedan that defined the modern BMW</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">1994</div>
+                    <div class="timeline-content">
+                        <h3>Rover Group Acquisition</h3>
+                        <p>Expanded portfolio with Land Rover and MINI brands</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">2013</div>
+                    <div class="timeline-content">
+                        <h3>BMW i Subbrand Launched</h3>
+                        <p>Introducing electric vehicles with i3 and i8</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>Electric Vehicle Push</h3>
+                        <p>Launched iX3 and announced ambitious electrification plans</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>100 Years of M</h3>
+                        <p>Celebrated a century of M performance vehicles</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Карта -->
-    <section class="map reveal">
+    <section class="community" id="community">
         <div class="container">
-            <h2 class="section-title">Мы на карте</h2>
-            <p class="section-subtitle">Посетите наш бутик в самом сердце Москвы</p>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.372951434774!2d37.60986031593029!3d55.755825280553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a738fa419%3A0x7c347d506b52311f!2z0KLQstC10YDRgdC60LDRjyDRg9C7LiwgMTUsINCc0L7RgdC60LLQsCwgMTA3MDQ1!5e0!3m2!1sru!2sru!4v1648121226783!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <h2 class="section-title animate-on-scroll">Join Our Community</h2>
+            <p class="section-subtitle animate-on-scroll">Connect with fellow BMW enthusiasts worldwide</p>
+            <div class="community-grid">
+                <div class="community-card animate-on-scroll">
+                    <div class="community-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Car Meets</h3>
+                    <p>Attend local meetups and showcase your BMW</p>
+                </div>
+                <div class="community-card animate-on-scroll">
+                    <div class="community-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h3>Track Days</h3>
+                    <p>Experience peak performance on renowned tracks</p>
+                </div>
+                <div class="community-card animate-on-scroll">
+                    <div class="community-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Forums</h3>
+                    <p>Discuss modifications, maintenance, and more</p>
+                </div>
+                <div class="community-card animate-on-scroll">
+                    <div class="community-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Competitions</h3>
+                    <p>Participate in autocross and drag events</p>
+                </div>
+                <div class="community-card animate-on-scroll">
+                    <div class="community-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Network</h3>
+                    <p>Connect with enthusiasts from 150+ countries</p>
+                </div>
+                <div class="community-card animate-on-scroll">
+                    <div class="community-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h3>Events</h3>
+                    <p>Exclusive access to BMW launches and experiences</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Футер -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Photo Gallery</h2>
+            <p class="section-subtitle animate-on-scroll">Capturing the beauty of BMW engineering</p>
+            <div class="gallery-filters animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="sedan">Sedans</button>
+                <button class="filter-btn" data-filter="suv">SUVs</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+                <button class="filter-btn" data-filter="electric">Electric</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll" data-category="sedan">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80" alt="BMW M5">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="sports">
+                    <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=600&q=80" alt="BMW M3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="suv">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="BMW X5">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="electric">
+                    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=600&q=80" alt="BMW i8">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="sedan">
+                    <img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=600&q=80" alt="BMW 3 Series">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="sports">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600&q=80" alt="BMW M4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="suv">
+                    <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80" alt="BMW X7">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="electric">
+                    <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&q=80" alt="BMW iX">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="sedan">
+                    <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&q=80" alt="BMW 5 Series">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="sports">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=80" alt="BMW Z4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="suv">
+                    <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=80" alt="BMW X3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="electric">
+                    <img src="https://images.unsplash.com/photo-1618856764569-1e8d5d4c8c0c?w=600&q=80" alt="BMW i4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-image" src="" alt="">
+    </div>
+
+    <section class="newsletter" id="contact">
+        <div class="container">
+            <div class="newsletter-content animate-on-scroll">
+                <h2>Stay Connected</h2>
+                <p>Subscribe to receive the latest news, events, and exclusive content</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
-            <div class="footer-top">
+            <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <span class="logo-icon">✨</span>
-                        <span class="logo-text">Designer Goods</span>
+                        <span class="logo-icon"><i class="fas fa-b"></i></span>
+                        <span class="logo-text">BMW FANS</span>
                     </a>
-                    <p class="footer-tagline">Искусство в каждой детали.</p>
+                    <p>The ultimate community for BMW enthusiasts</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Каталог</h4>
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#">Одежда</a></li>
-                        <li><a href="#">Аксессуары</a></li>
-                        <li><a href="#">Часы</a></li>
-                        <li><a href="#">Ювелирные изделия</a></li>
+                        <li><a href="#models">Models</a></li>
+                        <li><a href="#history">History</a></li>
+                        <li><a href="#community">Community</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Помощь</h4>
-                    <ul>
-                        <li><a href="#">Доставка и оплата</a></li>
-                        <li><a href="#">Возврат и обмен</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Конфиденциальность</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Социальные сети</h4>
-                    <ul class="social-links">
-                        <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i> Telegram</a></li>
-                        <li><a href="#" aria-label="VK"><i class="fab fa-vk"></i> VK</a></li>
-                        <li><a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i> Pinterest</a></li>
-                    </ul>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Designer Goods. Все права защищены.</p>
-                <p><a href="#">Политика конфиденциальности</a> | <a href="#">Условия использования</a></p>
+                <p>&copy; 2024 BMW FANS. All rights reserved. Not affiliated with BMW AG.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Модальное окно корзины -->
-    <div class="modal" id="cart-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Корзина</h3>
-                <button class="modal-close" aria-label="Закрыть">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="cart-items">
-                    <p class="empty-cart">Корзина пуста</p>
-                </div>
-                <div class="cart-total">
-                    <strong>Итого:</strong> <span class="total-price">0 ₽</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" id="close-cart">Продолжить покупки</button>
-                <button class="btn btn-primary" id="checkout">Оформить заказ</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/script.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
-            .then(reg => console.log('Service Worker зарегистрирован', reg))
-            .catch(err => console.log('Ошибка регистрации Service Worker', err));
-        });
-      }
-    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
