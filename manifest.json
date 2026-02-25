@@ -1,13 +1,13 @@
 {
   "projectName": "Fast Track Thai",
-  "version": "1.4.0",
-  "timestamp": "2026-02-25T12:00:00.000Z",
-  "buildHash": "release-https-mixed-content-fixed",
-  "apiUrl": "https://l1o0nbaryn.ap.loclx.io",
-  "description": "Production build with HTTPS API URL (Mixed Content issue resolved)",
+  "version": "1.5.0",
+  "timestamp": "2026-02-25T12:30:00.000Z",
+  "buildHash": "release-auto-restart-tunnel",
+  "apiUrl": "https://1tjjhnbsiv.ap.loclx.io",
+  "description": "Production build with AUTO-RESTART tunnel (watchdog every 4 min)",
   "files": [
     "index.html",
     "assets/index-DSb9Doll.css",
-    "assets/index-DRvuSmno.js"
+    "assets/index-DOFsMvAs.js"
   ]
 }
