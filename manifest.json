@@ -1,0 +1,13 @@
+{
+  "projectName": "Fast Track Thai",
+  "version": "1.0.0",
+  "timestamp": "2026-02-25T11:06:00.000Z",
+  "buildHash": "release-2025-02-25",
+  "apiUrl": "http://wo4uw7jxgn.ap.loclx.io",
+  "description": "Production build with updated LocalXpose tunnel URL",
+  "files": [
+    "index.html",
+    "assets/index-DSb9Doll.css",
+    "assets/index-CTNszmuf.js"
+  ]
+}
