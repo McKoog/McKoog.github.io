@@ -1,13 +1,13 @@
 {
   "projectName": "Fast Track Thai",
-  "version": "1.5.0",
-  "timestamp": "2026-02-25T12:30:00.000Z",
-  "buildHash": "release-auto-restart-tunnel",
-  "apiUrl": "https://1tjjhnbsiv.ap.loclx.io",
-  "description": "Production build with AUTO-RESTART tunnel (watchdog every 4 min)",
+  "version": "2.0.0",
+  "timestamp": "2026-02-25T14:56:00.000Z",
+  "buildHash": "release-pro-domain-stable-https",
+  "apiUrl": "https://backassistant.ap.loclx.io",
+  "description": "Production build with PRO LocalXpose domain (backassistant.ap.loclx.io) - STABLE HTTPS",
   "files": [
     "index.html",
     "assets/index-DSb9Doll.css",
-    "assets/index-DOFsMvAs.js"
+    "assets/index-CxtdGvIf.js"
   ]
 }
