@@ -1,13 +1,13 @@
 {
   "projectName": "Fast Track Thai",
-  "version": "1.1.0",
-  "timestamp": "2026-02-25T11:16:00.000Z",
-  "buildHash": "release-tunnel-v2-nohup",
+  "version": "1.2.0",
+  "timestamp": "2026-02-25T11:32:00.000Z",
+  "buildHash": "release-correct-url",
   "apiUrl": "http://j8ezhsej5d.ap.loclx.io",
-  "description": "Production build with updated LocalXpose tunnel URL (persistent nohup run)",
+  "description": "Production build with CORRECTED LocalXpose tunnel URL",
   "files": [
     "index.html",
     "assets/index-DSb9Doll.css",
-    "assets/index-CTNszmuf.js"
+    "assets/index-DWrlc0Rd.js"
   ]
 }
