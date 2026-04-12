@@ -45950,7 +45950,7 @@ if(j)l.p(0,new A.l6(k))
 a=b.a.d
 i=r.ha(B.ye)
 h=i>0?0+i*0.01:0
-for(a=A.aNM(a,h+(j?0.05:0),j).a,q=a.length,n=b.w,g=b.r,f=0;f<a.length;a.length===q||(0,A.v)(a),++f){e=a[f]
+for(a=A.aNM(a,h+(j?0.2:0),j).a,q=a.length,n=b.w,g=b.r,f=0;f<a.length;a.length===q||(0,A.v)(a),++f){e=a[f]
 d=b.a4Y(e)
 if(e instanceof A.kZ)s.p(0,new A.oE(e.f))
 else if(!l.c.a.gams())l.p(0,new A.hn(e))
@@ -92331,9 +92331,9 @@ return A.Ko(10,1,A.b([A.bm(q,80,B.cc,10,5,q,q),A.bm(q,10,B.ap,1,1,B.bH,q),A.bm(q
 s($,"b_V","aKa",()=>{var q=null
 return A.Ko(25,0.75,A.b([A.bm(q,80,B.cc,20,10,q,q),A.bm(q,20,B.ap,1,1,B.bH,q),A.bm(q,15,B.ap,1,1,B.aX,q),A.bm(q,10,B.a6,1,1,q,B.bh),A.bm(q,10,B.a6,1,1,q,B.aZ),A.bm(q,10,B.a6,1,1,q,B.b7),A.bm(B.bi,9,B.U,1,1,q,q),A.bm(B.b9,9,B.U,1,1,q,q),A.bm(B.ba,9,B.U,1,1,q,q),A.bm(B.bj,9,B.U,1,1,q,q)],t.U0),20,100,"bandit","assets/icons/enemies/bandit.png","Bandit",2)})
 s($,"b05","aKf",()=>{var q=null
-return A.Ko(35,0.5,A.b([A.bm(q,80,B.cc,30,25,q,q),A.bm(q,25,B.ap,1,1,B.bH,q),A.bm(q,20,B.ap,1,1,B.aX,q),A.bm(q,17,B.a6,1,1,q,B.b7),A.bm(q,15,B.a6,1,1,q,B.bh),A.bm(q,15,B.a6,1,1,q,B.aZ),A.bm(B.bi,12,B.U,1,1,q,q),A.bm(B.b9,12,B.U,1,1,q,q),A.bm(B.ba,12,B.U,1,1,q,q),A.bm(B.bj,12,B.U,1,1,q,q),A.bm(q,0.1,B.ap,1,1,B.bg,q),A.bm(q,0.1,B.ap,1,1,B.bI,q),A.bm(q,0.1,B.cd,1,1,q,q)],t.U0),50,200,"goblin","assets/icons/enemies/goblin.png","Goblin",4)})
+return A.Ko(35,0.5,A.b([A.bm(q,80,B.cc,30,25,q,q),A.bm(q,25,B.ap,1,1,B.bH,q),A.bm(q,20,B.ap,1,1,B.aX,q),A.bm(q,17,B.a6,1,1,q,B.b7),A.bm(q,15,B.a6,1,1,q,B.bh),A.bm(q,15,B.a6,1,1,q,B.aZ),A.bm(B.bi,12,B.U,1,1,q,q),A.bm(B.b9,12,B.U,1,1,q,q),A.bm(B.ba,12,B.U,1,1,q,q),A.bm(B.bj,12,B.U,1,1,q,q),A.bm(q,2.5,B.ap,1,1,B.bg,q),A.bm(q,2.5,B.ap,1,1,B.bI,q),A.bm(q,2.5,B.cd,1,1,q,q)],t.U0),50,200,"goblin","assets/icons/enemies/goblin.png","Goblin",4)})
 s($,"b03","aKe",()=>{var q=null
-return A.Ko(45,0.5,A.b([A.bm(q,80,B.cc,50,40,q,q),A.bm(q,40,B.ap,1,1,B.bH,q),A.bm(q,35,B.ap,1,1,B.aX,q),A.bm(q,20,B.a6,1,1,q,B.aZ),A.bm(B.bi,20,B.U,1,1,q,q),A.bm(B.b9,20,B.U,1,1,q,q),A.bm(B.ba,20,B.U,1,1,q,q),A.bm(B.bj,20,B.U,1,1,q,q),A.bm(q,20,B.a6,1,1,q,B.b7),A.bm(q,20,B.a6,1,1,q,B.bh),A.bm(q,1,B.ap,1,1,B.bg,q),A.bm(q,1,B.ap,1,1,B.bI,q),A.bm(q,1,B.cd,1,1,q,q)],t.U0),100,300,"dryad","assets/icons/enemies/dryad.png","Dryad",8)})
+return A.Ko(45,0.5,A.b([A.bm(q,80,B.cc,50,40,q,q),A.bm(q,40,B.ap,1,1,B.bH,q),A.bm(q,35,B.ap,1,1,B.aX,q),A.bm(q,20,B.a6,1,1,q,B.aZ),A.bm(B.bi,20,B.U,1,1,q,q),A.bm(B.b9,20,B.U,1,1,q,q),A.bm(B.ba,20,B.U,1,1,q,q),A.bm(B.bj,20,B.U,1,1,q,q),A.bm(q,20,B.a6,1,1,q,B.b7),A.bm(q,20,B.a6,1,1,q,B.bh),A.bm(q,5,B.ap,1,1,B.bg,q),A.bm(q,5,B.ap,1,1,B.bI,q),A.bm(q,5,B.cd,1,1,q,q)],t.U0),100,300,"dryad","assets/icons/enemies/dryad.png","Dryad",8)})
 s($,"aWi","jp",()=>A.aq([B.dj,new A.LP()],A.ag("rH"),A.ag("xA")))
 s($,"aYc","azG",()=>A.aDd(null))
 s($,"aYx","hL",()=>{var q,p,o=new A.P5(A.u(t.N,t.ue))
