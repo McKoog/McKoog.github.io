@@ -9595,24 +9595,22 @@ aOu(a,b,c){var s,r,q,p,o,n,m,l,k,j,i,h
 if(a.a==="ancient_ent_defender")return new A.Mg(A.aOt(a,b,c))
 s=A.b([],t.VF)
 for(r=a.r,q=r.length,p=0;p<r.length;r.length===q||(0,A.u)(r),++p){o=r[p]
-n=o.a
-m=n+n*b
-if(m>100)m=100
-if(!($.rK().bp()*100<=m))continue
-l=A.aCY(o.f,o.r)
-n=o.b
-if(n===B.bk){s.push(new A.jM(l,B.bh.jl(),B.bk,"assets/icons/other_items/coin.png",0,0))
-continue}for(k=o.c,j=o.d,i=o.e,h=0;h<l;++h)s.push(A.aCW(A.axQ(n,j,!0,i,k),c))}return new A.Mg(s)},
-aOt(a,b,c){var s,r,q,p,o,n,m,l,k,j,i,h,g,f=A.b([],t.VF)
-for(s=a.r,r=s.length,q=0;q<s.length;s.length===r||(0,A.u)(s),++q){p=s[q]
-o=p.a
-n=o+o*b
+n=o.a+b
 if(n>100)n=100
 if(!($.rK().bp()*100<=n))continue
-m=A.aCY(p.f,p.r)
-o=p.b
-if(o===B.bk){f.push(new A.jM(m,B.bh.jl(),B.bk,"assets/icons/other_items/coin.png",0,0))
-continue}for(l=p.c,k=p.d,j=p.e,i=0;i<m;++i){h=A.axQ(o,k,!1,j,l)
+m=A.aCY(o.f,o.r)
+l=o.b
+if(l===B.bk){s.push(new A.jM(m,B.bh.jl(),B.bk,"assets/icons/other_items/coin.png",0,0))
+continue}for(k=o.c,j=o.d,i=o.e,h=0;h<m;++h)s.push(A.aCW(A.axQ(l,j,!0,i,k),c))}return new A.Mg(s)},
+aOt(a,b,c){var s,r,q,p,o,n,m,l,k,j,i,h,g,f=A.b([],t.VF)
+for(s=a.r,r=s.length,q=0;q<s.length;s.length===r||(0,A.u)(s),++q){p=s[q]
+o=p.a+b
+if(o>100)o=100
+if(!($.rK().bp()*100<=o))continue
+n=A.aCY(p.f,p.r)
+m=p.b
+if(m===B.bk){f.push(new A.jM(n,B.bh.jl(),B.bk,"assets/icons/other_items/coin.png",0,0))
+continue}for(l=p.c,k=p.d,j=p.e,i=0;i<n;++i){h=A.axQ(m,k,!1,j,l)
 if(h instanceof A.ck){g=A.aCX()
 h.at=A.aDT(g)
 h.ax=A.BT(A.BV(g))}else if(h instanceof A.c7){g=A.aCX()
@@ -46859,7 +46857,7 @@ n=A.cS(B.m,2)
 m=A.bc(15)
 l=A.b([new A.cA(2,B.ax,$.e4(),B.i,10)],t.V)
 k=t.p
-return A.a1_(new A.dH(B.c6,d,d,new A.iG(new A.a6(0,q*0.9,0,p.d*0.6),A.dc(B.aj,A.aC(d,A.br(A.b([A.au(b.d.b,d,d,d,d,d,d,d,B.lx,B.aB,d,d),B.C,new A.fT(1,B.bX,A.hD(A.br(A.b([A.au("HP: "+A.fn(s.d)+"\nGlobal scaling bonus: +"+e.d+"%\nPassive abilities:\n- Boss aura: After start of the fight it's not possible to escape, weapon slot can be closed as usual but it won't prevent aggression and attacks from the boss.\n- Boss heal: When not recieving damage for 4 seconds get 150 hp/sec regen untill the next hit.\n",d,d,d,d,d,d,d,B.lA,d,d,d),A.Ob(d,d,d,B.bO,d,d,!0,d,A.bN(A.b([A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.m,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),"Phase 1 (>70% HP):\n"),A.bN(d,d,d,d,d,d,d,d,d,d,"ATT: "+A.fn(100*r)+"\nSPD: 1/s\nCRIT: 5% (150% DMG)\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.a7,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),c),A.bN(d,d,d,d,d,d,d,d,d,d,"NO\n\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.m,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),"Phase 2 (>30% HP):\n"),A.bN(d,d,d,d,d,d,d,d,d,d,"ATT: "+A.fn(70*r)+"\nSPD: 0.5/s\nCRIT: 5% (150% DMG)\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.a7,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),c),A.bN(d,d,d,d,d,d,d,d,d,d,"- Perfect reflection: return 100% pure recieved damage back for 5 sec. ( 2 sec notice timer )\n\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.m,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),"Phase 3 (<30% HP)\n"),A.bN(d,d,d,d,d,d,d,d,d,d,"ATT: "+A.fn(50*r)+" (increases)\nSPD: 0.5/s\nCRIT: 5% (150% DMG)\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.a7,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),c),A.bN(d,d,d,d,d,d,d,d,d,d,"- Increasing damage flow: sleep for 5 sec, then attack damage will gradually increase by 7% each second for 15 seconds.")],t.VO),d,d,d,d,d,d,d,d,B.lA,d),B.aC,d,d,B.aU,B.aJ)],k),B.aq,B.x,B.z),d,d,d,B.a_),d),B.da,A.zi(B.A_,new A.aoA(b,a0),A.KB(d,d,B.jo,d,d,d,d,d,d,d,d,d,B.nF,d,new A.cD(A.bc(20),B.o),d,d,d,d,d))],k),B.bE,B.x,B.af),B.k,d,d,new A.aM(o,d,n,m,l,d,d,B.v),d,d,d,B.eO,d,d,d),B.R,!1,d,d,d,d,d,d,d,d,d,d,d,d,d,d,new A.aoB(),d,d,d,d,d,d),d),d),B.c6,a,B.M0,!0,B.dm)}j=b.r.i(0,a)
+return A.a1_(new A.dH(B.c6,d,d,new A.iG(new A.a6(0,q*0.9,0,p.d*0.6),A.dc(B.aj,A.aC(d,A.br(A.b([A.au(b.d.b,d,d,d,d,d,d,d,B.lx,B.aB,d,d),B.C,new A.fT(1,B.bX,A.hD(A.br(A.b([A.au("HP: "+A.fn(s.d)+"\nGlobal scaling bonus: +"+e.d+"%\nPassive abilities:\n- Boss aura: After start of the fight it's not possible to escape, weapon slot can be closed as usual but it won't prevent aggression and attacks from the boss.\n- Boss heal: When not recieving damage for 4 seconds get 150 hp/sec regen untill the next hit.\n",d,d,d,d,d,d,d,B.lA,d,d,d),A.Ob(d,d,d,B.bO,d,d,!0,d,A.bN(A.b([A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.m,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),"Phase 1 (>70% HP):\n"),A.bN(d,d,d,d,d,d,d,d,d,d,"ATT: "+A.fn(100*r)+"\nSPD: 1/s\nCRIT: 5% (150% DMG)\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.a7,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),c),A.bN(d,d,d,d,d,d,d,d,d,d,"NO\n\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.m,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),"Phase 2 (>30% HP):\n"),A.bN(d,d,d,d,d,d,d,d,d,d,"ATT: "+A.fn(70*r)+"\nSPD: 0.5/s\nCRIT: 5% (150% DMG)\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.a7,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),c),A.bN(d,d,d,d,d,d,d,d,d,d,"- Perfect reflection: return 100% pure recieved damage back for 5 sec. ( 3 sec notice timer )\n\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.m,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),"Phase 3 (<30% HP)\n"),A.bN(d,d,d,d,d,d,d,d,d,d,"ATT: "+A.fn(50*r)+" (increases)\nSPD: 0.5/s\nCRIT: 5% (150% DMG)\n"),A.bN(d,d,d,d,d,d,d,d,d,A.ef(d,d,B.a7,d,d,d,d,d,d,d,d,d,d,d,B.E,d,d,!0,d,d,d,d,d,d,d,d),c),A.bN(d,d,d,d,d,d,d,d,d,d,"- Increasing damage flow: sleep for 5 sec, then attack damage will gradually increase by 7% each second for 15 seconds.")],t.VO),d,d,d,d,d,d,d,d,B.lA,d),B.aC,d,d,B.aU,B.aJ)],k),B.aq,B.x,B.z),d,d,d,B.a_),d),B.da,A.zi(B.A_,new A.aoA(b,a0),A.KB(d,d,B.jo,d,d,d,d,d,d,d,d,d,B.nF,d,new A.cD(A.bc(20),B.o),d,d,d,d,d))],k),B.bE,B.x,B.af),B.k,d,d,new A.aM(o,d,n,m,l,d,d,B.v),d,d,d,B.eO,d,d,d),B.R,!1,d,d,d,d,d,d,d,d,d,d,d,d,d,d,new A.aoB(),d,d,d,d,d,d),d),d),B.c6,a,B.M0,!0,B.dm)}j=b.r.i(0,a)
 i=(j==null?B.A:j).b<0
 a=b.d
 a.toString
