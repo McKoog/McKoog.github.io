@@ -1,50 +1,255 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- Cache control to force the browser to always check for a new version of index.html -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="enchanment_game">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>enchanment_game</title>
-  <link rel="manifest" href="manifest.json">
+<!-- Релизная сборка «Balls Royal Battle» · 19.09.2026, 15:58:17 · режим min -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Balls Royal Battle — прототип v1: карта, физика, камера</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='%230b0f17' stroke='%238fd3ff'/><circle cx='8' cy='8' r='3' fill='%230b0f17' stroke='%238fd3ff'/></svg>">
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #0b0f17; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #c8d4e8; }
+  canvas { display: block; }
+  #hud { position: fixed; inset: 0; pointer-events: none; z-index: 10;
+         font-size: 13px; line-height: 1.5; }
+  .panel { background: rgba(10, 14, 22, 0.72); border: 1px solid rgba(120, 160, 220, 0.25);
+           border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(4px); }
+  #hint { position: fixed; left: 18px; bottom: 10px; z-index: 10;
+          font-size: 12px; color: #5a6a88; opacity: 0.75; text-align: center;
+          background: rgba(10, 14, 22, 0.5); border-radius: 8px; padding: 4px 12px; }
+  kbd { background: #1c2740; border-radius: 4px; padding: 1px 6px; font-size: 11px;
+        border: 1px solid #2c3a5c; }
+  #session-timer { position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+        z-index: 11; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 17px; letter-spacing: 2px; color: #bfe6ff; font-weight: 700;
+        background: rgba(10, 14, 22, 0.72); border: 1px solid rgba(120, 160, 220, 0.25);
+        border-radius: 10px; padding: 5px 16px; backdrop-filter: blur(4px); }
+  #player-speed { position: fixed; top: 50px; left: 50%; transform: translateX(-50%);
+        z-index: 11; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px; letter-spacing: 1.5px; color: #bfe6ff; font-weight: 600;
+        background: rgba(10, 14, 22, 0.72); border: 1px solid rgba(120, 160, 220, 0.25);
+        border-radius: 10px; padding: 3px 12px; backdrop-filter: blur(4px); }
+  #hit-layer { position: fixed; inset: 0; pointer-events: none; z-index: 12; overflow: hidden; }
+  #hp-layer { position: fixed; inset: 0; pointer-events: none; z-index: 12; overflow: hidden; }
+  .hp-label { position: absolute; color: #ffffff; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 1px;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.6);
+        transform: translate(-50%, -50%); white-space: nowrap; }
+  .creep-hp { position: absolute; color: #d9ffe8; font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+        transform: translate(-50%, -50%); white-space: nowrap; }
+  .unit-ui { position: absolute; display: flex; flex-direction: column; align-items: center;
+        gap: 2px; pointer-events: none; white-space: nowrap;
+        transform: translate(-50%, -100%); }
+  .unit-lv { color: #ffd463; font-family: system-ui, sans-serif; font-size: 12px; font-weight: 700;
+        letter-spacing: 1px; text-shadow: 0 1px 2px rgba(0,0,0,0.95), 0 0 8px rgba(255,190,60,0.4); }
+  .unit-xpbar { height: 3px; background: #0e2918; border: 1px solid rgba(93,255,138,0.35);
+        border-radius: 2px; overflow: hidden; }
+  .unit-xpbar-fill { height: 100%; width: 0%; background: #7dffa8; }
+  /* «Обезоруживание»: метка над уровнем персонажа — !таймер! красными;
+     при эффекте — иконка перечёркнутой руки */
+  .unit-mark { position: absolute; display: flex; align-items: center; gap: 3px;
+        padding: 1px 6px; border-radius: 9px; white-space: nowrap; pointer-events: none;
+        background: rgba(24, 4, 8, 0.55); border: 1px solid rgba(255, 77, 94, 0.5);
+        transform: translate(-50%, -100%); z-index: 3; /* низ метки = на точке top */
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  .unit-mark b { color: #ff4d5e; font-size: 14px; font-weight: 800; line-height: 1;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.9); }
+  .unit-mark i { color: #ffd7da; font-size: 12px; font-style: normal; font-weight: 700;
+        font-variant-numeric: tabular-nums; min-width: 22px; text-align: center; }
+  .unit-mark.disarm { background: rgba(36, 3, 8, 0.62); border-color: rgba(255, 82, 92, 0.75); }
+  .no-hand { position: relative; display: inline-block; font-size: 15px; line-height: 1;
+        padding: 0 1px; }
+  .no-hand::after { content: ''; position: absolute; left: -16%; right: -10%; top: 44%;
+        height: 3.2px; background: #ff1f35; border-radius: 2px; transform: rotate(-20deg);
+        box-shadow: 0 0 0 1px rgba(255, 245, 246, 0.75), 0 1px 3px rgba(0,0,0,0.7); }
+  .hit-text.shields { display: flex; align-items: center; gap: 6px; font-size: 13px;
+        font-weight: 800; letter-spacing: 0.5px; }
+  .hit-text.shields .sh-ico { font-size: 14px; line-height: 1; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6)); }
+  .hit-text.pierce { display: flex; align-items: center; gap: 5px; font-size: 20px; }
+  .hit-text.pierce .pb-ico { font-size: 15px; line-height: 1;
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.7)); }
+  
+  #debug-ui {
+    position: fixed; right: 18px; bottom: 18px; z-index: 15;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+  }
+  #debug-btn {
+    font-family: system-ui, sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; color: #9fd8ff; background: rgba(10, 14, 22, 0.82);
+    border: 1px solid rgba(120, 160, 220, 0.4); border-radius: 8px;
+    padding: 6px 16px; cursor: pointer; user-select: none; }
+  #debug-btn:hover { background: rgba(30, 44, 70, 0.92); color: #c8e6ff; }
+  #debug-panel {
+    display: none; min-width: 240px; padding: 10px 14px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12.5px; line-height: 1.7; color: #9fd8ff; }
+  #debug-panel .dt { color: #5f7ea6; }
+  /* скорость симуляции: двойные стрелки по краям, число по центру */
+  #sim-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 4px 2px 8px; margin-bottom: 6px;
+    border-bottom: 1px dashed rgba(120, 160, 220, 0.16); }
+  .sim-btn {
+    width: 28px; height: 28px; border: 1px solid rgba(120, 160, 220, 0.4);
+    border-radius: 50%; background: rgba(10, 14, 22, 0.85); color: #9fd8ff;
+    font-size: 14px; line-height: 1; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; padding: 0; }
+  .sim-btn:hover:not(:disabled) { background: rgba(30, 44, 70, 0.92); color: #c8e6ff; }
+  .sim-btn:disabled { opacity: 0.3; cursor: default; }
+  .sim-val {
+    min-width: 52px; text-align: center; font-size: 15px; font-weight: 700;
+    color: #cfeaff; letter-spacing: 1px; }
+  .debug-pts-btn { width: auto; padding: 0 14px; height: 28px; margin-top: 9px;
+        border-radius: 12px; font-size: 11px; letter-spacing: 1px; color: #ffe9a0; }
+  /* Характеристики персонажа: кнопка снизу по центру + панель над ней */
+  #stats-ui {
+    position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 15;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  #stats-btn {
+    position: relative; width: 48px; height: 48px; border-radius: 12px; cursor: pointer;
+    background: rgba(10, 14, 22, 0.85); border: 1px solid rgba(255, 210, 77, 0.5);
+    color: #ffd24d; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45); }
+  #stats-btn:hover { background: rgba(46, 38, 15, 0.92); }
+  #stats-badge {
+    position: absolute; top: -7px; right: -7px; min-width: 19px; height: 19px; padding: 0 4px;
+    border-radius: 10px; background: #ffd24d; color: #0b0f17; font-size: 11px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(255, 210, 77, 0.55); }
+  #stats-panel { display: none; width: 380px; padding: 12px 14px; }
+  .stats-head { font-size: 11px; letter-spacing: 2px; color: #ffd24d; font-weight: 700;
+        margin-bottom: 4px; opacity: 0.95; }
+  .stats-row { display: flex; align-items: center; gap: 8px; padding: 6px 0;
+        border-bottom: 1px dashed rgba(120, 160, 220, 0.16); }
+  .stats-row:last-child { border-bottom: none; }
+  .stats-seg { border-bottom: 1px dashed rgba(120, 160, 220, 0.16); }
+  .stats-seg:last-child { border-bottom: none; }
+  .stats-seg .stats-row { border-bottom: none; padding-bottom: 3px; }
+  .stats-lvl { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px; font-weight: 700; color: #ffd24d; flex: none; } /* (x) очков вложено */
+  .stats-sub { display: flex; align-items: center; gap: 8px;
+        padding: 2.5px 0 2.5px 28px; font-size: 11.5px;
+        margin-right: 112px; } /* правый отступ = месту под «+» и слоты способностей */
+  .stats-sub .lbl { flex: 1; color: #8fa3c2; }
+  .stats-name { flex: 1; font-size: 12.5px; color: #c8d4e8; }
+  .stats-val { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px; color: #9fd8ff; white-space: nowrap; }
+  .stats-next { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px; color: #7dffa8; white-space: nowrap; }
+  .stats-plus { width: 22px; height: 22px; border: none; border-radius: 50%; cursor: pointer;
+        background: linear-gradient(180deg, #ffd24d, #e8a83c); color: #0b0f17;
+        font-size: 15px; font-weight: 800; line-height: 1; flex: none;
+        display: flex; align-items: center; justify-content: center; }
+  .stats-plus:disabled { opacity: 0.3; cursor: default; }
+  .stats-pts { margin-top: 8px; font-size: 12px; color: #ffd463; font-weight: 600; }
+  /* квадратики пассивных способностей характеристики (по центру под строкой) */
+  .abil-row { display: flex; justify-content: center; gap: 12px; padding: 2px 0 7px; }
+  .abil-slot { position: relative; width: 30px; height: 30px; border-radius: 7px;
+        background: rgba(10, 14, 22, 0.9); border: 1px solid rgba(120, 160, 220, 0.25);
+        display: flex; align-items: center; justify-content: center; flex: none; }
+  .abil-slot.unlocked { border: 2px solid #ffd24d; }
+  .abil-ico { font-size: 15px; line-height: 1; opacity: 0.28; filter: grayscale(0.3); }
+  .abil-slot.unlocked .abil-ico { opacity: 1; filter: none; }
+  .abil-lock { position: absolute; inset: 0; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 0; font-family: system-ui, sans-serif; }
+  .abil-lock .lock-ico { font-size: 11px; line-height: 1; }
+  .abil-lock .lock-n { font-size: 8.5px; font-weight: 800; color: #ffd24d; line-height: 1.1; }
+  /* колонка разблокированных способностей игрока (слева по центру):
+     рамки в цвет СТЕН игры, бадж счётчика/стаков и тег прибавки справа */
+  #abil-list { position: fixed; left: 14px; top: 50%; transform: translateY(-50%);
+        display: flex; flex-direction: column; gap: 8px; z-index: 14; }
+  .abil-item { position: relative; display: flex; align-items: center; gap: 8px;
+        min-width: 46px; height: 40px; padding: 0 12px 0 7px; border-radius: 10px;
+        border: 2px solid #84d5ff; background: rgba(10, 14, 22, 0.88);
+        cursor: pointer; }
+  .abil-item:hover { background: rgba(18, 34, 52, 0.94); }
+  .abil-item .abil-ico { font-size: 21px; opacity: 1; filter: none; }
+  .abil-badge { position: absolute; top: -7px; right: -7px; min-width: 18px; height: 18px;
+        padding: 0 4px; border-radius: 9px; background: #84d5ff; color: #0b0f17;
+        font-size: 10px; font-weight: 800; display: flex; align-items: center;
+        justify-content: center; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); }
+  .abil-tag { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11px; font-weight: 600; color: #cfe6ff; white-space: nowrap; }
+  /* панель информации о способности */
+  #abil-info { position: fixed; left: 0; top: 0; transform: none;
+        display: none; width: 320px; z-index: 16; }
+  #abil-info .abil-info-title { font-size: 14px; font-weight: 700; color: #ffd24d;
+        letter-spacing: 0.5px; }
+  #abil-info .abil-info-ico { font-size: 26px; margin-right: 8px; vertical-align: -4px; }
+  #abil-info .abil-info-desc { font-size: 12.5px; color: #c8d4e8; line-height: 1.55; margin-top: 2px; }
+  #abil-info .abil-info-status { font-size: 12px; color: #9fd8ff; line-height: 1.6;
+        margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(120, 160, 220, 0.25); }
+  #abil-info .abil-info-close { position: absolute; top: 8px; right: 10px; cursor: pointer;
+        color: #5f7ea6; font-size: 15px; line-height: 1; }
+  #abil-info .abil-info-close:hover { color: #c8e6ff; }
+  #overlay { position: fixed; inset: 0; z-index: 30; display: none; align-items: center; justify-content: center;
+        flex-direction: column; gap: 22px; background: rgba(6, 9, 15, 0.62); backdrop-filter: blur(3px); }
+  #overlay-title { font-size: 42px; font-weight: 800; letter-spacing: 4px; text-align: center;
+        color: #ffd24d; text-shadow: 0 2px 18px rgba(255, 190, 40, 0.35); }
+  #overlay-title.gameover { color: #ff5a4e; text-shadow: 0 2px 18px rgba(255, 60, 40, 0.4); }
+  #restart-btn { font-family: system-ui, sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px;
+        color: #08222f; background: #7fd0ff; border: none; border-radius: 10px; padding: 12px 40px;
+        cursor: pointer; box-shadow: 0 4px 18px rgba(90, 200, 255, 0.35); }
+  #restart-btn:hover { background: #a8ddff; }
+  .hit-text { position: absolute; color: #ff5a4e; font-weight: 400; font-size: 20px;
+        font-family: system-ui, sans-serif; letter-spacing: 2px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 0 8px rgba(255,60,40,0.45);
+        transform: translate(-50%, -50%); white-space: nowrap; }
+</style>
 </head>
 <body>
-  <script>
-    // Add cache-busting timestamp to flutter_bootstrap.js to always fetch the latest version
-    var version = new Date().getTime();
-    var script = document.createElement("script");
-    script.src = "flutter_bootstrap.js?v=" + version;
-    script.async = true;
-    document.body.appendChild(script);
-  </script>
+<div id="session-timer">00:00</div>
+<div id="player-speed">скорость: 0</div>
+<div id="abil-list"></div>
+<div class="panel" id="abil-info">
+  <span class="abil-info-close" id="abil-info-close" title="Закрыть">✕</span>
+  <div class="abil-info-title"><span class="abil-info-ico" id="abil-info-ico"></span><span id="abil-info-name"></span></div>
+  <div class="abil-info-desc" id="abil-info-desc"></div>
+  <div class="abil-info-status" id="abil-info-status"></div>
+</div>
+<div id="hit-layer"></div>
+<div id="hp-layer"></div>
+<div id="stats-ui">
+  <div class="panel" id="stats-panel">
+    <div class="stats-head">ХАРАКТЕРИСТИКИ ПЕРСОНАЖА</div>
+    <div id="stats-rows"></div>
+    <div class="stats-pts">Доступно очков: <span id="stats-pts-val">0</span></div>
+  </div>
+  <button id="stats-btn" type="button" title="Характеристики персонажа">
+    <svg viewBox="0 0 26 26" width="25" height="25" fill="none" stroke="currentColor"
+         stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="10" cy="8.2" r="3.1"/>
+      <path d="M4 20.6a6.8 6.8 0 0 1 12 0"/>
+      <path d="M20.4 4.6v5.4M17.7 7.3h5.4"/>
+    </svg>
+    <span id="stats-badge" style="display:none">0</span>
+  </button>
+</div>
+<div id="debug-ui">
+  <div class="panel" id="debug-panel">
+    <div id="sim-row" title="Скорость симуляции">
+      <button id="sim-slower" type="button" class="sim-btn" title="Замедлить симуляцию">«</button>
+      <div class="sim-val" id="sim-speed-val">1</div>
+      <button id="sim-faster" type="button" class="sim-btn" title="Ускорить симуляцию">»</button>
+    </div>
+    <div id="s-total">Σ скорость: <span class="dt">0.0</span></div>
+    <div id="s-avg">средняя за сессию: <span class="dt">0.0</span></div>
+    <div id="s-min">мин скорость: <span class="dt">0.0</span></div>
+    <div id="s-max">макс скорость: <span class="dt">0.0</span></div>
+    <button id="debug-pts-btn" type="button" class="sim-btn debug-pts-btn"
+      title="Начислить игроку 30 очков характеристик (для тестирования)">+30 ОЧКОВ</button>
+  </div>
+  <button id="debug-btn" type="button">DEBUG</button>
+</div>
+<div id="overlay">
+  <div id="overlay-title"></div>
+  <button id="restart-btn">RESTART</button>
+</div>
+<div id="hint">v2 — комнаты ×2 · гравитация · восстановление инерции · <kbd>R</kbd> — сброс</div>
+
+<script src="js/app.min.js?v=e525eded"></script>
 </body>
 </html>
